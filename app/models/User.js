@@ -6,6 +6,8 @@ var check = require('validator').check,
 
 
 exports.findById = function(id, callback){
+    
+    check(id).notEmpty().isInt();
    
    client.query("SELECT * FROM users WHERE id = " + id , function(err, result){
        if(err){
@@ -20,8 +22,10 @@ exports.findById = function(id, callback){
 
 exports.findByEmail = function(email, callback){
    
-   //check(email.isEmail());
-   check(email).isEmail();
+   email = email.toLowerCase();
+   email = sanitize(email).trim().xss();
+   check(email).isEmail().notEmpty();
+   
 
     client.query("SELECT * FROM users WHERE email = '" + email + "'", function(err, result){
         if(err){
@@ -34,8 +38,21 @@ exports.findByEmail = function(email, callback){
 }
 
 exports.create = function(name, email, fbid, callback){
+    
+    email = email.toLowerCase();
+    email = sanitize(email).trim().xss();
+    check(email).isEmail().notEmpty();
+    
+    name = sanitize(name).trim().xss();
+    check(name).notEmpty();
+    
+    fbid = sanitize(fbid).trim().xss().toInt();
+    check(fbid).notEmpty();
+    
+    var sql = "INSERT INTO users (fbid, name, email) VALUES (" + fbid +
+        ", '" + name + "', '" + email + "')";
 
-    client.query("SQL", function(err, result){
+    client.query(sql, function(err, result){
         if(err){
             callback(err, null);
         }
