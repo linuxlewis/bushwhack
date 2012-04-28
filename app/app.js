@@ -21,7 +21,7 @@ exports.createServer = function(){
     }
 
     app.get('/', function(req, res){
-        res.render('index.html', {title : 'yay'});
+        res.render('index.html', {title : 'yay');
     });
 
     return app;
