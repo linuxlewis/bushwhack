@@ -17,7 +17,7 @@ exports.mapRoutes = function(app){
 
     });
 
-    app.get('/game/:id', helper.restrictToUser function(req, res){
+    app.get('/game/:id', helper.restrictToUser, function(req, res){
 
     });
 }
