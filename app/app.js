@@ -11,6 +11,7 @@ exports.createServer = function(){
     app.use(express.session({secret:'SUP BITCH!!2222'}));
     app.use(express.bodyParser());
     app.use(express.methodOverride());
+    app.set("jsonp callback", true);
     //app.dynamicHelpers({messages: require('express-messages') });
     app.use('/assets',express.static(__dirname + '/assets'));
     app.register('.html', require('ejs'));
