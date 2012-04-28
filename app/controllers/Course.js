@@ -31,7 +31,7 @@ exports.mapRoutes = function(app){
             else{
                 res.json(result);
             }
-        }
+        });
     });
 
 }
