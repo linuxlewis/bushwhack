@@ -37,11 +37,11 @@ function oauth_callback(code, callback_url, callback){
 exports.mapRoutes = function(app){
 
     app.get('/auth/facebook/login', function(req, res){
-        res.redirect(login_url('http://www.bushwhack.herokuapp.com/auth/facebook/callback'));
+        res.redirect(login_url('http://bushwhack.herokuapp.com/auth/facebook/callback'));
     });
 
     app.get('/auth/facebook/callback', function(req, res){
-        oauth_callback(req.query.code, 'http://www.bushwhack.herokuapp.com/auth/facebook/callback', function(err, access_token, refresh_token){
+        oauth_callback(req.query.code, 'http://bushwhack.herokuapp.com/auth/facebook/callback', function(err, access_token, refresh_token){
             if(err){
                 res.render('error', err);
             }
