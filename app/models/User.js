@@ -1,6 +1,9 @@
 var db = require('./model');
 var client = db.client;
 
+var check = require('validator').check,
+    sanitize = require('validator').sanitize
+
 
 exports.findById = function(id, callback){
    
