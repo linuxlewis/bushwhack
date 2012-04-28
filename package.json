@@ -11,7 +11,8 @@
         "oauth":"0.9.7",
         "request":"2.9.202",
         "pg":"0.6.17",
-        "express-messages":"0.0.2"
+        "express-messages":"0.0.2",
+        "validator":"0.4.6-2"
     }
 
 

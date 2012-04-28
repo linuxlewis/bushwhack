@@ -13,7 +13,7 @@ exports.mapRoutes = function(app){
     });
 
     app.get('/course/near/:lat/:lon', function(req, res){
-        course.findByLatLon(req.param.lat, req.param.lon, function(err, result){
+        course.findByLatLon(req.params.lat, req.params.lon, function(err, result){
             if(err){
                 res.json(err, 500);
             }

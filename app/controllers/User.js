@@ -23,4 +23,19 @@ exports.mapRoutes = function(app){
         });
 
     });
+
+    app.get('/user/email/:email', function(req, res){
+
+        User.findByEmail(req.params.email, function(err, result){
+            if(err){
+                res.json(err, 500);
+            }
+            else{
+
+                res.json(result);     
+            }
+        });
+
+
+    });
 }
