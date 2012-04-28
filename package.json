@@ -6,7 +6,8 @@
         "npm":"1.1.9"
     },
     "dependencies" : {
-        "express": "2.5.9"
+        "express": "2.5.9",
+        "ejs": "0.7.1"
     }
 
 
