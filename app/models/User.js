@@ -23,7 +23,8 @@ exports.findById = function(id, callback){
 exports.findByEmail = function(email, callback){
    
    email = email.toLowerCase();
-   email = sanitize(email).xss().trim();
+   email = sanitize(email).trim();
+   email = sanitize(email).xss();
    check(email).isEmail().notEmpty();
    
 
@@ -39,17 +40,21 @@ exports.findByEmail = function(email, callback){
 
 exports.create = function(name, email, fbid, callback){
     
-    check(email).isEmail().notEmpty();
+    check(email).isEmail();
     //email = email.toLowerCase();
     email = sanitize(email).trim();
     email = sanitize(email).xss();
     
     
-    name = sanitize(name).trim().xss();
     check(name).notEmpty();
+    name = sanitize(name).trim()
+    name = sanitize(name).xss();
     
-    fbid = sanitize(fbid).trim().xss().toInt();
     check(fbid).notEmpty();
+    fbid = sanitize(fbid).trim().
+    fbid = sanitize(fbid).xss().
+    fbid = sanitize(fbid).toInt();
+    
     
     var sql = "INSERT INTO users (fbid, name, email) VALUES (" + fbid +
         ", '" + name + "', '" + email + "')";
