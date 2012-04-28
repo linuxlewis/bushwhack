@@ -12,7 +12,7 @@ exports.mapRoutes = function(app){
 
     app.get('/user/:id', function(req, res){
         
-        User.findById(req.param.id, function(err, result){
+        User.findById(req.params.id, function(err, result){
             if(err){
                 res.json(err, 500);
             }
