@@ -39,9 +39,10 @@ exports.findByEmail = function(email, callback){
 
 exports.create = function(name, email, fbid, callback){
     
-    email = email.toLowerCase();
-    email = sanitize(email).trim().xss();
     check(email).isEmail().notEmpty();
+    //email = email.toLowerCase();
+    email = sanitize(email).trim().xss();
+    
     
     name = sanitize(name).trim().xss();
     check(name).notEmpty();
