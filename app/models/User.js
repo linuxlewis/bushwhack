@@ -47,12 +47,12 @@ exports.create = function(name, email, fbid, callback){
     
     
     check(name).notEmpty();
-    name = sanitize(name).trim()
+    name = sanitize(name).trim();
     name = sanitize(name).xss();
     
     check(fbid).notEmpty();
-    fbid = sanitize(fbid).trim().
-    fbid = sanitize(fbid).xss().
+    fbid = sanitize(fbid).trim();
+    fbid = sanitize(fbid).xss();
     fbid = sanitize(fbid).toInt();
     
     
