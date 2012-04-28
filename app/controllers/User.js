@@ -17,6 +17,7 @@ exports.mapRoutes = function(app){
                 res.json(err, 500);
             }
             else{
+
                 res.json(result);     
             }
         });
