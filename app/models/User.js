@@ -41,7 +41,8 @@ exports.create = function(name, email, fbid, callback){
     
     check(email).isEmail().notEmpty();
     //email = email.toLowerCase();
-    email = sanitize(email).trim().xss();
+    email = sanitize(email).trim();
+    email = sanitize(email).xss();
     
     
     name = sanitize(name).trim().xss();
