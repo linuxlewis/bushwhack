@@ -59,7 +59,8 @@ exports.mapRoutes = function(app){
     });
 
     app.get('/auth/facebook/logout', function(req, res){
-       //logout 
+        req.session.destroy();
+        res.redirect('/');
     });
 
 }
