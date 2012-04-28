@@ -1,5 +1,5 @@
 {
-    "name":"anheiserbushwack",
+    "name":"bushwack",
     "version": "0.0.1",
     "engines" : {
         "node":"0.6.15",
@@ -7,7 +7,8 @@
     },
     "dependencies" : {
         "express": "2.5.9",
-        "ejs": "0.7.1"
+        "ejs": "0.7.1",
+        "oauth":"0.9.7"
     }
 
 
