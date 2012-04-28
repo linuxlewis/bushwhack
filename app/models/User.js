@@ -4,8 +4,6 @@ var client = db.client;
 
 exports.findById = function(id, callback){
    
-   console.log('id = "' + id + '"\n<br/>');
-   
    client.query("SELECT * FROM users WHERE id = " + id , function(err, result){
        if(err){
             callback(err, null);
@@ -18,8 +16,10 @@ exports.findById = function(id, callback){
 }
 
 exports.findByEmail = function(email, callback){
+   
+   check(email.isEmail());
 
-    client.query("SQL", function(err, result){
+    client.query("SELECT * FROM users WHERE email = '" + email + "'", function(err, result){
         if(err){
             callback(err, null);
         }
