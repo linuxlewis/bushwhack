@@ -1,0 +1,4 @@
+exports.mapRoutes = function(app){
+    
+
+}
