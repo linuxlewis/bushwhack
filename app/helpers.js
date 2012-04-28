@@ -1,6 +1,6 @@
 
 exports.restrictToUser = function(req, res, next){
-    if(!req.sesssion.facebook.access_token){
+    if(!req.sesssion.facebook){
 
         req.flash('error', 'please log in'); 
 
