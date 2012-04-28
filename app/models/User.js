@@ -20,7 +20,8 @@ exports.findById = function(id, callback){
 
 exports.findByEmail = function(email, callback){
    
-   check(email.isEmail());
+   //check(email.isEmail());
+   check(email).isEmail();
 
     client.query("SELECT * FROM users WHERE email = '" + email + "'", function(err, result){
         if(err){
