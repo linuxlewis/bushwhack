@@ -4,7 +4,7 @@ var client = db.client;
 
 exports.findById = function(id, callback){
    
-   client.query("SQL" , function(err, result){
+   client.query("SELECT * FROM users WHERE id = " + id , function(err, result){
        if(err){
             callback(err, null);
        }
