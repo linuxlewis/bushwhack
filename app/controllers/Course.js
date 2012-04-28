@@ -1,3 +1,4 @@
+var Course = require('../models/Course.js');
 
 exports.mapRoutes = function(app){
 

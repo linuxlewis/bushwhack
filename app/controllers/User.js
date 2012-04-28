@@ -1,3 +1,5 @@
+var User = require('../models/User.js');
+
 exports.mapRoutes = function(app){
 
     app.get('/user/new', function(req, res){
