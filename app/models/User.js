@@ -23,7 +23,7 @@ exports.findById = function(id, callback){
 exports.findByEmail = function(email, callback){
    
    email = email.toLowerCase();
-   email = sanitize(email).trim().xss();
+   email = sanitize(email).xss().trim();
    check(email).isEmail().notEmpty();
    
 
