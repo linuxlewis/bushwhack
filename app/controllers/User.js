@@ -6,6 +6,22 @@ exports.mapRoutes = function(app){
 
     });
 
+    app.get('/user/:name/:email/:fbid', function(req, res){
+
+        User.create(req.params.name, req.params.email, req.params.fbid, function(err, data){
+
+            if(err){
+                res.json(err, 500);
+            }
+            else{
+                res.json(data);
+            }
+
+        });
+
+
+    });
+
     app.post('/user', function(req, res){
 
     });
