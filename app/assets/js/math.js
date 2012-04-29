@@ -7,3 +7,5 @@ function calculateDegree(lat1, lon1, lat2, lon2){
 
     return radians * (180/3.1415) 
 }
+
+console.log(calculateDegree(43.564472,-89.945068, 43.586359,-90.072784));

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>BushWhack.com</title>
+
+<!-- begin css -->
+<link rel="stylesheet" href="/assets/css/defaltwithgreen.min.css" />
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile.structure-1.1.0.min.css" />
+<link rel="stylesheet" href="/assets/css/styles.css" />
+
+<!-- begin scripts -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
+
+<!-- fires map script -->
+<script>
+
+    $('#map').live('pagecreate',function(event){
+        initialize();
+        addruler();
+    });
+
+</script>
+<!-- end scripts -->
+
+</head>
+<!-- end head -->
+
+
+<!-- begin body -->
+<body>
+
+<!-- begin splash page -->
+<div data-role="page" data-theme="a" id="home">
+
+<!-- begin content -->
+<div data-role="content">
+
+<div style=" text-align:center">
+<img style="width: 100%;" src="assets/img/splash.jpg" />
+</div>
+
+<!-- begin navbar -->
+<div data-role="navbar" data-iconpos="top">
+<ul>
+<li><a href="#login" data-theme="a" data-icon="" class="ui-btn-active">Play a game</a></li>
+</ul>
+</div>
+<!-- end navbar -->
+
+</div>
+<!-- end content -->
+
+</div>
+<!-- end splash page -->
+
+<!-- begin login page -->
+<div data-role="page" id="login">
+
+<!-- begin login page header -->
+<div data-theme="a" data-role="header">
+<h3>Header</h3>
+</div>
+<!-- end login page header -->
+
+<!-- begin login page content -->
+<div data-role="content">
+
+<!-- begin login page nav
+<div data-role="navbar" data-iconpos="top">
+<ul>
+<li><a href="#home" data-theme="a" data-icon="" class="ui-btn-active">Home</a></li>
+</ul>
+</div> -->
+
+<ul data-role="listview" data-divider-theme="a" data-inset="true">
+<li data-role="list-divider" role="heading">Do you want to</li>
+<li data-theme="a"><a href="#course_find" data-transition="slide">Find a course</a></li>
+<li data-theme="a"><a href="#course_location" data-transition="slide">Find courses near you</a></li>
+<li data-theme="a"><a href="#course_search" data-transition="slide">Search all courses</a></li>
+</ul>
+
+<a data-theme="a" data-role="button" data-transition="fade" href="page4">Log In with Facebook</a>
+
+</div>
+<!-- end login page content -->
+
+<div data-theme="a" data-role="footer">
+<h3>Footer</h3>
+</div>
+
+</div>
+<!-- end login page -->
+
+
+<!-- begin course find -->
+<div data-role="page" id="course_find">
+<div data-theme="a" data-role="header">
+<h3>Header</h3>
+</div>
+
+<div data-role="content">
+
+<div data-role="navbar" data-iconpos="top">
+<ul>
+<li><a href="#home" data-theme="a" data-icon="" class="ui-btn-active">Home</a></li>
+</ul>
+</div>
+
+<div data-role="fieldcontain">
+<fieldset data-role="controlgroup" data-mini="true">
+<label for="textinput1"></label>
+<input id="textinput1" placeholder="" value="" type="search" />
+</fieldset>
+</div>
+
+<div>
+<b>List of courses here....</b>
+</div>
+
+<input type="submit" value="Submit" />
+
+</div>
+
+<div data-theme="a" data-role="footer">
+<h3>Footer</h3>
+</div>
+
+</div>
+<!-- end course find -->
+
+
+<!-- begin course location -->
+<div data-role="page" id="course_location">
+
+<div data-theme="a" data-role="header">
+<h3>Header</h3>
+</div>
+
+<!-- begin course location content -->
+<div data-role="content">
+
+<div data-role="navbar" data-iconpos="top">
+<ul>
+<li><a href="#home" data-theme="a" data-icon="" class="ui-btn-active">Home</a></li>
+</ul>
+</div>
+
+<div data-role="fieldcontain">
+<fieldset data-role="controlgroup" data-mini="true">
+<label for="textinput3"></label>
+<input id="textinput3" placeholder="" value="" type="search" />
+</fieldset>
+</div>
+
+<div>
+<b>List of courses here....</b>
+</div>
+<input type="submit" value="Submit" />
+
+</div>
+
+<div data-theme="a" data-role="footer">
+<h3>Footer</h3>
+</div>
+
+</div>
+<!-- end course location -->
+
+<!-- begin course search -->
+<div data-role="page" id="course_search">
+
+<div data-theme="a" data-role="header">
+<h3>Header</h3>
+</div>
+
+<div data-role="content">
+
+<div data-role="navbar" data-iconpos="top">
+<ul>
+<li><a href="#home" data-theme="a" data-icon="" class="ui-btn-active">Home</a></li>
+</ul>
+</div>
+
+<div data-role="fieldcontain">
+<fieldset data-role="controlgroup" data-mini="true">
+<label for="textinput2"></label>
+<input id="textinput2" placeholder="" value="" type="search" />
+</fieldset>
+</div>
+
+<input type="submit" value="Submit" />
+<div>
+<b>List of courses here....</b>
+</div>
+</div>
+
+<div data-theme="a" data-role="footer">
+<h3>Footer</h3>
+</div>
+</div>
+<!-- end course search -->
+
+
+<!-- begin course detail -->
+<div data-role="page" id="course_detail">
+
+<div data-theme="a" data-role="header">
+<h3>Header</h3>
+</div>
+
+<div data-role="content">
+
+<div data-role="navbar" data-iconpos="top">
+<ul>
+<li><a href="#page1" data-theme="a" data-icon="">Home</a>
+</li>
+</ul>
+</div>
+
+<div style="">
+<img style="width: 288px; height: 100px" src="https://lh5.googleusercontent.com/2FAex42yhMtffx_9JoWdKkBsgmdHTynb6dSmdBR-3vT2_pMblpLZUK9_upR82LtaUa4FP6hmF9A" />
+</div>
+
+<h2>Course Name</h2>
+<input type="submit" data-icon="check" data-iconpos="top" value="Play this Course" data-mini="true" />
+</div>
+
+<div data-theme="a" data-role="footer">
+<h3>Footer</h3>
+</div>
+
+</div>
+<!-- end course detail -->
+
+
+<!-- begin hole detail -->
+<div data-role="page" id="hole_detail">
+
+<div data-theme="a" data-role="header">
+<h3>Header</h3>
+</div>
+
+<div data-role="content">
+<div>
+<b>Hole No. 1, Par, Like</b>
+</div>
+
+<img src="https://maps.googleapis.com/maps/api/staticmap?center=Madison, WI&amp;zoom=14&amp;size=288x288&amp;markers=Elver Park, Madison, WI&amp;sensor=false" width="288" height="288" />
+
+<div data-role="navbar" data-iconpos="top">
+<ul>
+<li><a href="#page1" data-theme="a" data-icon="plus">Zoom</a></li>
+<li><a href="#next_hole_detail" data-theme="a" data-icon="arrow-r">Next Hole</a></li>
+</ul>
+</div>
+
+</div>
+
+<div data-theme="a" data-role="footer">
+<h3>Footer</h3>
+</div>
+
+</div>
+<!-- end hole detail -->
+
+<!-- begin next hole -->
+<div data-role="page" id="next_hole_detail">
+
+<div data-theme="a" data-role="header">
+<h3>Header</h3>
+</div>
+
+<div data-role="content">
+<div>
+<b>Hole No. 2, Par, Like</b>
+</div>
+
+<img src="https://maps.googleapis.com/maps/api/staticmap?center=Madison, WI&amp;zoom=14&amp;size=288x288&amp;markers=Elver Park, Madison, WI&amp;sensor=false" width="288" height="288" />
+
+<div data-role="navbar" data-iconpos="top">
+<ul>
+<li><a href="#hole_detail" data-theme="a" data-icon="arrow-l">Previous Hole</a></li>
+<li><a href="#page1" data-theme="a" data-icon="plus">Zoom</a></li>
+<li><a href="#" data-theme="a" data-icon="arrow-r">Next Hole</a></li>
+</ul>
+</div>
+
+</div>
+
+<div data-theme="a" data-role="footer">
+<h3>Footer</h3>
+</div>
+
+</div>
+<!-- end next hole -->
+
+
+<!-- begin score entry -->
+<div data-role="page" id="score_entry">
+
+<div data-theme="a" data-role="header">
+<h3>Header</h3>
+</div>
+
+<div data-role="content">
+<input type="submit" value="Submit" />
+
+<div data-role="fieldcontain">
+<fieldset data-role="controlgroup" data-mini="true">
+<label for="textinput4">Player 1 Score</label>
+<input id="textinput4" placeholder="" value="" type="number" />
+</fieldset>
+</div>
+
+<div data-role="fieldcontain">
+<fieldset data-role="controlgroup" data-mini="true">
+<label for="textinput5">Player 2 Score</label>
+<input id="textinput5" placeholder="" value="" type="number" />
+</fieldset>
+</div>
+
+<input type="submit" data-icon="check" data-iconpos="left" value="Submit" data-mini="true" />
+</div>
+
+<div data-theme="a" data-role="footer">
+<h3>Footer</h3>
+</div>
+
+</div>
+<!-- end score entry -->
+
+</body>
+
+<!-- begin scripts -->
+<script src="http://maps.google.com/maps/api/js?sensor=false&libraries=geometry"></script>
+<script src="/assets/js/labels.js"></script>
+<script src="/assets/js/ruler.js"></script>
+<script src="/assets/js/course-map.js"></script>
+<!-- end scripts -->
+
+</html>

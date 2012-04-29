@@ -1,0 +1,10 @@
+/*structure*/
+#map-container {display: block; width: 100%; height: 100%;}
+#map-action-bar {display: block; width: 100%; height: 100%; text-align: center;}
+#map_canvas {display: block; width: 95%; height: 350px; margin: 0 auto 0 auto;}
+#traffic-camera {display: block; width: 95%; height: auto; margin: 0 auto 0 auto;}
+
+
+/*styles*/
+#home-image {width: 70%; margin: 0 auto 0 auto;}
+a {text-decoration: none;}

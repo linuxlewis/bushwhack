@@ -1,6 +1,6 @@
 var express = require('express');
 
-var controllers = ['User', 'Course', 'Game', 'Auth']; 
+var controllers = ['User', 'Course', 'Game', 'Auth', 'Page']; 
 
 exports.createServer = function(){
 
@@ -23,14 +23,6 @@ exports.createServer = function(){
         var module = require('./controllers/'+controllers[controller]);
         module.mapRoutes(app);
     }
-
-    app.get('/', function(req, res){
-        res.render('index.html', {title : 'yay'});
-    });
-
-    app.get('/survey', function(req, res){
-        res.render('survey.html');
-    });
 
     return app;
 }
