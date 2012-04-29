@@ -53,7 +53,7 @@ exports.mapRoutes = function(app){
                     req.session.facebook.refresh_token = refresh_token
                 }
                 //res.redirect('/game/new');
-                res.redirect('/app#login');
+                res.redirect('/home');
             }
 
         });
