@@ -5,33 +5,35 @@
 
 var geocoder = new google.maps.Geocoder();
 var map;
-var latlng = new google.maps.LatLng(43.034979,-89.502284);
 
+//elver park first hole midpoint
+var latlng = new google.maps.LatLng(43.035002,-89.502288);
 
 $(document).ready(function(){
 
+    //old map hook for jquery map plugin
     //$('#map_canvas').gmap();
 
     var myOptions = {
-        zoom: 20,
+        zoom: 17,
         center: latlng,
         mapTypeId: google.maps.MapTypeId.SATELLITE,
         scrollwheel: false,
-        draggable: true,
+        draggable: false,
         mapTypeControl: false,
         navigationControl: true,
         streetViewControl: false,
         panControl: false,
         scaleControl: true,
         navigationControlOptions: {
-            style: google.maps.NavigationControlStyle.LARGE,
+            style: google.maps.NavigationControlStyle.SMALL,
             position: google.maps.ControlPosition.RIGHT_TOP
         }
     };
 
-	
     map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 
+    //adds distance calculator
     addruler();
 
 	/*
