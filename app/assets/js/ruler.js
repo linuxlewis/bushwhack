@@ -6,31 +6,31 @@
 
 function addruler() {
 
+/*
 var teePosition = new google.maps.LatLng(43.034942,-89.502696);
 var midPosition = new google.maps.LatLng(43.035002,-89.50228);
 var holePosition = new google.maps.LatLng(43.035034,-89.501778);
-
+*/
 	var ruler1 = new google.maps.Marker({
-		position: teePosition,
+		position: map.getCenter(),
 		map: map,
 		draggable: true
 	});
 
 	var ruler2 = new google.maps.Marker({
-		position: holePosition,
+		position: map.getCenter(),
 		map: map,
 		draggable: true
 	});
 
-	var ruler1label = new Label({ map: map });
-	var ruler2label = new Label({ map: map });
-
-	//ruler1label.bindTo('position', ruler1, 'position');
-	ruler2label.bindTo('position', ruler2, 'position');
+    var ruler1label = new Label({ map: map });
+    var ruler2label = new Label({ map: map });
+    ruler1label.bindTo('position', ruler1, 'position');
+    ruler2label.bindTo('position', ruler2, 'position');
 
 	var rulerpoly = new google.maps.Polyline({
 		path: [ruler1.position, ruler2.position] ,
-		strokeColor: "#fff",
+		strokeColor: "#ff5100",
 		strokeOpacity: .7,
 		strokeWeight: 6
 	});
