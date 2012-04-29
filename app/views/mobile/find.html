@@ -38,8 +38,8 @@
 
     function locationResponse(result){
         alert(result.rows.toString());
-        for (var course in result.rows){
-            alert(JSON.stringify(course));
+        for (var id in result.rows){
+            var course = result.rows[id]; 
             $('#course-list').append('<li><a href=\'/course_detail\'>' + course.name + '</a></li>');
         }
 
