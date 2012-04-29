@@ -9,7 +9,7 @@ var findByLocationId = function(req, res){
         else{
             res.json(result);
         }
-});
+};
 
 
 exports.mapRoutes = function(app){
