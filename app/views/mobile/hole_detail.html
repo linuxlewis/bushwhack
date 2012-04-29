@@ -1,37 +1,42 @@
+<!-- HOLE NUMBER 1 -->
+
 <!-- begin page -->
 <div data-role="page" id="hole_detail">
 
+<!-- begin script -->
 <script type="text/javascript">
 
 var geocoder = new google.maps.Geocoder();
 var map;
-var latlng = new google.maps.LatLng(43.034979,-89.502284);
 
+//elver park first hole midpoint
+var latlng = new google.maps.LatLng(43.036948,-89.502177);
 
 $(document).ready(function(){
 
+    //old map hook for jquery map plugin
     //$('#map_canvas').gmap();
 
     var myOptions = {
-        zoom: 20,
+        zoom: 17,
         center: latlng,
         mapTypeId: google.maps.MapTypeId.SATELLITE,
         scrollwheel: false,
-        draggable: true,
+        draggable: false,
         mapTypeControl: false,
         navigationControl: true,
         streetViewControl: false,
         panControl: false,
         scaleControl: true,
         navigationControlOptions: {
-            style: google.maps.NavigationControlStyle.LARGE,
+            style: google.maps.NavigationControlStyle.SMALL,
             position: google.maps.ControlPosition.RIGHT_TOP
         }
     };
 
-	
     map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 
+    //adds distance calculator
     addruler();
 
 	/*
@@ -40,13 +45,13 @@ $(document).ready(function(){
 		$('#map_canvas').css({'-webkit-transform' : ''});
 	});
 	*/
-
-
-
 });
 
 </script>
-<style>
+<!-- end script -->
+
+<style type="text/css">
+#map_canvas {width: 80%; height: 500px;}
 </style>
 
 <div id="map_canvas"></div>
@@ -56,13 +61,19 @@ $(document).ready(function(){
 
 <div data-role="navbar" data-iconpos="top">
 <ul>
-<li><a href="#" data-theme="a" data-icon="plus" data-role="button">Zoom</a></li>
-<li><a href="/next_hole_detail" data-theme="a" data-icon="arrow-r" data-role="button">Next Hole</a></li>
+<!-- <li><a href="#" data-theme="a" data-icon="plus" data-role="button">Zoom</a></li> -->
+<li><a href="/hole_next" data-theme="a" data-icon="arrow-r" data-role="button">Next Hole</a></li>
 </ul>
 </div>
 
 </div>
 <!-- end content -->
+
+<!-- begin page footer -->
+<div data-theme="a" data-role="footer">
+<img style="width: 100%;" src="assets/img/footer.jpg" />
+</div>
+<!-- end page footer -->
 
 </div>
 <!-- end page -->
