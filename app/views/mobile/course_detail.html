@@ -20,6 +20,7 @@ $(document).ready(function(){
 		$('#course_teetype').text(course.tee_type);
 		$('#course_established').text(course.established);
 		$('#course_description').text(course.description);
+        $('#play-link').attr('href', '/hole_detail/'+course.id+'/1');
 	}
 
 });
@@ -27,15 +28,36 @@ $(document).ready(function(){
 <!-- begin content -->
 <div data-role="content">
 
-<a href="/hole_detail" data-ajax="false" data-icon="check" data-role="button">Play this course</a>
+<a id='play-link' href="" data-ajax="false" data-icon="check" data-role="button" data-theme="a">Play this course</a>
 
 <div id="course-content">
 <h2 id="course_name">&nbsp;</h2>
-<strong>Course Distance:</strong>&nbsp;<span id="course_distance">&nbsp;</span></p>
+<div data-role="collapsible">
+   <h3>Course Distance</h3>
+   <p><span id="course_distance">&nbsp;</span></p>
+</div>
+<div data-role="collapsible">
+   <h3>Target Type</h3>
+   <p><span id="course_targettype">&nbsp;</span></p>
+</div>
+<div data-role="collapsible">
+   <h3>Tee Type</h3>
+   <p><span id="course_teetype">&nbsp;</span></p>
+</div>
+<div data-role="collapsible">
+   <h3>Established</h3>
+   <p><span id="course_established">&nbsp;</span></p>
+</div>
+<div data-role="collapsible">
+   <h3>DGCourseReview.com says</h3>
+   <p><span id="course_description">&nbsp;</span></p>
+</div>
+
+<!--<strong>Course Distance:</strong>&nbsp;<span id="course_distance">&nbsp;</span></p>
 <strong>Target Type:</strong>&nbsp;<span id="course_targettype">&nbsp;</span></p>
 <strong>Tee Type:</strong>&nbsp;<span id="course_teetype">&nbsp;</span></p>
 <strong>Established:</strong>&nbsp;<span id="course_established">&nbsp;</span></p>
-<strong>DGCourseReview.com says:</strong>&nbsp;<span id="course_description">&nbsp;</span></p>
+<strong>DGCourseReview.com says:</strong>&nbsp;<span id="course_description">&nbsp;</span></p>-->
 </div>
 
 </div>
