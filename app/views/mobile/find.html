@@ -5,9 +5,8 @@
             geo_position_js.getCurrentPosition(gpsSuccess,
                 function(){//handle error
                     alert('error');
-                }
-                ,{enableHighAccuracy:true});
-            alert('hey');
+                });
+            //alert('hey');
 
         }
         else
@@ -40,7 +39,7 @@
     function locationResponse(result){
         alert(result.rows.toString());
         for (var course in result.rows){
-            alert(course.name);
+            alert(JSON.stringify(course);
             $('#course-list').append('<li><a href=\'/course_detail\'>' + course.name + '</a></li>');
         }
 
