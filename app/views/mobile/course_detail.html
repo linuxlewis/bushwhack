@@ -11,16 +11,15 @@ $(document).ready(function(){
 		success: coursesResponse
 	});
 
-
+    var course;
 	function coursesResponse(result) {
-		var course = result.rows[0];
+		course = result.rows[0];
 		$('#course_name').text(course.name);
 		$('#course_distance').text(course.course_distance);
 		$('#course_targettype').text(course.target_type);
 		$('#course_teetype').text(course.tee_type);
 		$('#course_established').text(course.established);
 		$('#course_description').text(course.description);
-        alert(course.id);
         $.ajax({
             url: '/hole/bycourseid/'+course.id,
             dataType: 'json',
@@ -76,7 +75,7 @@ $(document).ready(function(){
 
 <!-- begin page footer -->
 <div data-theme="a" data-role="footer">
-    <img style="width: 100%;" src="assets/img/footer.jpg" />
+    <img style="width: 100%;" src="/assets/img/footer.jpg" />
 </div>
 <!-- end page footer -->
 
