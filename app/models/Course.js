@@ -3,7 +3,9 @@ var client = db.client;
 
 exports.findById = function(id, callback){
    
-   client.query("SQL" , function(err, result){
+   check(id).notEmpty().isInt();
+   
+   client.query("SELECT * FROM courses WHERE id = " + id , function(err, result){
        if(err){
             callback(err, null);
        }
@@ -14,10 +16,7 @@ exports.findById = function(id, callback){
    });
 }
 
-exports.findByLatLon = function(lat, lon, callback){
 
-
-}
 
 exports.create = function(course, properties, go, here, callback){
 
