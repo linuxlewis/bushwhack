@@ -19,8 +19,10 @@ exports.findById = function(id, callback){
 
 
 exports.findNearest = function(lat, lng, callback){
-    check(lat).isNumeric()
-    check(lng).isNumeric()
+    //check(lat).isNumeric()
+    //check(lng).isNumeric()
+    lat = sanitize(lat).toFloat();
+    lng = sanitize(lng).toFloat();
     
     //100 miles = 160935 meters
     var dist = 160935
