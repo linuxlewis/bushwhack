@@ -20,7 +20,7 @@
         $.ajax({
             url: url,
             dataType: 'json',
-            success:  locationReponse
+            success:  locationResponse
         });
     }
     function gpsFail(){
@@ -34,7 +34,7 @@
     }
 
     function locationResponse(result){
-        for (var course in result){
+        for (var course in result.rows){
             $('course-list').append('<li><a href=\'/course_detail\'>' + course.name + '</a></li>');
         }
 
@@ -44,8 +44,6 @@
 <div data-role="page" id="course_search">
 
 <!-- begin page header -->
-<div data-theme="a" data-role="header">
-<img style="width: 100%;" src="assets/img/header2.jpg" />
 <a href="/home" data-theme="a">Home</a>
 </div>
 <!-- end page header -->
@@ -55,7 +53,7 @@
 
 <div>
 <ul id='course-list' data-role="listview" data-filter="true" data-filter-placeholder="Search for course" data-theme="a">
-<li><a href="#">Baraboo Lions</a></li>
+<!--<li><a href="#">Baraboo Lions</a></li>
 <li><a href="#">Bird's Ruins</a></li>
 <li><a href="#">Bluffview Park</a></li>
 <li><a href="#">Collipp-Worden Park</a></li>
@@ -74,7 +72,7 @@
 <li><a href="#">Lodi Middle School</a></li>
 <li><a href="#">Lustig Park</a></li>
 <li><a href="#">Marion Park</a></li>
-<li><a href="#">Vallarta</a></li>
+<li><a href="#">Vallarta</a></li>-->
 </ul>
 </div>
 
