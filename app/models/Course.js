@@ -30,6 +30,20 @@ exports.findByLocationId = function(id, callback){
            callback(null, result);
        }
    });
+   
+   
+   
+/*
+Sample Insert:
+INSERT INTO courses
+    (location_id, name, lat, lng, earthloc)
+VALUES (
+	2,
+	'Elver Park',
+	43.037148, -89.502077,
+	ll_to_earth(43.037148, -89.502077)
+);
+*/
 }
 
 
