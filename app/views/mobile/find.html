@@ -5,6 +5,7 @@
             geo_position_js.getCurrentPosition(gpsSuccess,
                 function(){//handle error
              //       alert('error');
+                    gpsFail();
                 });
             //alert('hey');
 
@@ -13,6 +14,7 @@
         {
             //alert('boo');
             //gps not available
+            gpsFail();
 
         }
     });
