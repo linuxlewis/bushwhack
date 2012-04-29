@@ -36,6 +36,8 @@ $(document).ready(function(){
 
     //$('#map_canvas').rotate(84);
 
+	/*
+
     var $elie = $("#map_canvas");
     rotate(-84);
 
@@ -45,6 +47,13 @@ $(document).ready(function(){
       // For Mozilla browser: e.g. Firefox
            $elie.css({ '-moz-transform': 'rotate(' + degree + 'deg)'});
         }
+	*/
+
+	google.maps.event.addListener(map, 'tiles_loaded', function() {
+		alert('event');
+	});
+
+	$('#map_canvas').css({'-webkit-transform' : ''});
 
 
 });
@@ -52,7 +61,11 @@ $(document).ready(function(){
 </script>
 <style>
     #map_canvas{
-       -webkit-transform:rotate(-84deg); 
+		-ms-transform:rotate(30deg); /* IE 9 */
+		-moz-transform:rotate(30deg); /* Firefox */
+		-webkit-transform:rotate(30deg); /* Safari and Chrome */
+		-o-transform:rotate(30deg); /* Opera */
+		transform:rotate(30deg);
     }
 </style>
 
