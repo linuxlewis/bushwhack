@@ -10,7 +10,8 @@ var map, centerLat, centerLng, holeLat, holeLng, teeLat, teeLng, mapCenter, hole
 //elver park first hole midpoint
 //var latlng = new google.maps.LatLng(43.036948,-89.502177);
 
-$(document).ready(function(){
+//$(document).ready(function(){
+$(document).bind('pageinit', function(){
 
 	$.ajax({
 		url: '/hole/' + <%- hole_id %>,
