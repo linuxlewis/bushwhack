@@ -1,3 +1,45 @@
+<script type="text/javascript">
+    $('document').ready(function(){
+        if(geo_position_js.init())
+        {
+            geo_position_js.getCurrentPosition(gpsSuccess,
+                function(){//handle error
+                }
+                ,{enableHighAccuracy:true});
+
+        }
+        else
+        {
+            //gps not available
+
+        }
+    });
+
+    function gpsSuccess(position){
+        var url = 'http://bushwhack.co/loc/'+position.coords.latitude + '/' + position.coords.longitude;
+        $.ajax({
+            url: url,
+            dataType: 'json',
+            success:  locationReponse
+        });
+    }
+    function gpsFail(){
+        var url = 'http://bushwhack.co/loc/'+position.coords.latitude + '/' + position.coords.longitude;
+        //43.075158,-89.503212
+        $.ajax({
+            url: url,
+            dataType: 'json',
+            success:  locationReponse
+        });
+    }
+
+    function locationResponse(result){
+        for (var course in result){
+            $('course-list').append('<li><a href=\'/course_detail\'>' + course.name + '</a></li>');
+        }
+
+    }
+</script>
 <!-- begin page -->
 <div data-role="page" id="course_search">
 
@@ -19,7 +61,7 @@
 <!-- end nav bar -->
 
 <div>
-<ul data-role="listview" data-filter="true" data-filter-placeholder="Search for course" data-theme="a">
+<ul id='course-list' data-role="listview" data-filter="true" data-filter-placeholder="Search for course" data-theme="a">
 <li><a href="#">Baraboo Lions</a></li>
 <li><a href="#">Bird's Ruins</a></li>
 <li><a href="#">Bluffview Park</a></li>
