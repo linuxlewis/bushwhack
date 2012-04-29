@@ -25,7 +25,7 @@ exports.mapRoutes = function(app){
     
     
     app.get('/location/:id/courses', function(req, res){
-        Location.findCoursesByLocationId(req.param.id, function(err, result){
+        Course.findByLocationId(req.param.id, function(err, result){
             if(err){
                 res.json(err, 500)
             }
