@@ -79,6 +79,6 @@ function distance(lat1,lon1,lat2,lon2) {
 	var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
 	var d = R * c;
 	if (d>1) return Math.round(d)+"km";
-	else if (d<=1) return Math.round(d*1000)+"m";
+	else if (d<=1) return Math.round(d*1000/1.1)+"yds";
 	return d;
 }
