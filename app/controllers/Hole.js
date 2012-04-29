@@ -4,7 +4,7 @@ var Hole = require('../models/Hole.js');
 exports.mapRoutes = function(app){
 
     app.get('/hole/:id', function(req, res){
-        Hole.findById(req.params.lat, req.params.lng, function(err, result){
+        Hole.findById(req.params.id, function(err, result){
             if(err){
                 res.json(err, 500);
             }
@@ -16,7 +16,7 @@ exports.mapRoutes = function(app){
 
 
     app.get('/hole/bycourseid/:id', function(req, res){
-        Hole.findByCourseId(req.params.lat, req.params.lng, function(err, result){
+        Hole.findByCourseId(req.params.id, function(err, result){
             if(err){
                 res.json(err, 500);
             }
