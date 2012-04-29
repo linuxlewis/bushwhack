@@ -32,7 +32,9 @@ exports.findNearest = function(lat, lng, callback){
         "FROM locations" +
         "WHERE earth_box(ll_to_earth(" + lat + ", " + lng + "), " + dist + ") @> earthloc" +
         "ORDER BY distance LIMIT 10";
-    
+    callback(null, {"sql": sql}); 
+        
+    /*
     client.query(sql, function(err, result){
         if(err){
             callback(err, null);
@@ -41,6 +43,7 @@ exports.findNearest = function(lat, lng, callback){
             callback(null, result);
         }
     });
+    */
 }
 
 
