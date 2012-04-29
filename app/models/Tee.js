@@ -15,5 +15,18 @@ exports.findById = function(id, callback){
        else{
            callback(null, result);
        }
-   });
+	});
+}
+
+exports.findByHoleId = function(id, callback){
+   check(id).notEmpty().isInt();
+   
+   client.query("SELECT * FROM tees WHERE hole_id = " + id , function(err, result){
+       if(err){
+            callback(err, null);
+       }
+       else{
+           callback(null, result);
+       }
+	});
 }

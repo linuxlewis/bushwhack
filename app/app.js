@@ -1,6 +1,6 @@
 var express = require('express');
 
-var controllers = ['User', 'Course', 'Game', 'Auth', 'Page', 'Location', 'Hole']; 
+var controllers = ['User', 'Course', 'Game', 'Auth', 'Page', 'Location', 'Hole', 'Tee']; 
 
 exports.createServer = function(){
 
