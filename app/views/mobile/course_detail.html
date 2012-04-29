@@ -20,7 +20,7 @@ $(document).ready(function(){
 		$('#course_teetype').text(course.tee_type);
 		$('#course_established').text(course.established);
 		$('#course_description').text(course.description);
-
+        alert(course.id);
         $.ajax({
             url: '/hole/bycourseid/'+course.id,
             dataType: 'json',
