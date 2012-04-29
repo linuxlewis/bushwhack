@@ -49,11 +49,11 @@ $(document).bind('pageinit', function(){
 			(typeof teeLng != 'undefined')
 		) {
 			if (parseInt(hole.hole_number) < 5) {
-				$('#holenext').text('Hole #' + (parseInt(hole.hole_number) + 1));
+				$('#holenext').text('Hole #' + (parseInt(hole.hole_number) + 1)).button('refresh');
 				//$('#holenext').button('refresh');
 			}
 			if (parseInt(hole.hole_number) > 1) {
-				$('#holeprev').text('Hole #' + (parseInt(hole.hole_number) - 1));
+				$('#holeprev').text('Hole #' + (parseInt(hole.hole_number) - 1)).button('refresh');
 				//$('#holeprev').button('refresh');
 			}
 			
@@ -113,14 +113,16 @@ $(document).bind('pageinit', function(){
 <ul>
 <!-- <li><a href="#" data-theme="a" data-icon="plus" data-role="button">Zoom</a></li> -->
 
-<li>
+
 <% if (parseInt(hole_id) > 1) { %>
+<li>
 	<a id="holeprev" href="/hole_detail/<%- course_id %>/<%- (parseInt(hole_id) - 1)  %>" data-ajax="false" data-theme="a" data-icon="arrow-l" data-role="button">&nbsp;HoleNumber</a></li>
 <% } %>
 
 
-<li>
 <% if (parseInt(hole_id) < 5) { %>
+<li>
+
 	<a id="holenext" href="/hole_detail/<%- course_id %>/<%- (parseInt(hole_id) + 1)  %>" data-ajax="false" data-theme="a" data-icon="arrow-r" data-role="button">&nbsp;HoleNumber</a></li>
 <% } %>
 </ul>
