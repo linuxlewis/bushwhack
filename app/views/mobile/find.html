@@ -40,9 +40,9 @@
         alert(result.rows.toString());
         for (var id in result.rows){
             var course = result.rows[id]; 
-            $('#course-list').append('<li><a href=\'/course_detail\'>' + course.name + '</a></li>');
+            $('#course-list').append('<li><a href=\'/course_detail/'+ course.id + '\'>' + course.name + '</a></li>');
         }
-
+        $('#course-list').listview('refresh');
     }
 </script>
 <!-- begin page -->
