@@ -3,7 +3,7 @@ exports.mapRoutes = function(app){
 
     app.get('/location/near/:lat/:lon', function(req, res){
 
-        Location.findByLatLon(req.params.lat, req.params.lon, function(err, result){
+        Location.findNearest(req.params.lat, req.params.lon, function(err, result){
             if(err){
                 res.json(err, 500);
 
