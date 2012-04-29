@@ -20,8 +20,19 @@ $(document).ready(function(){
 		$('#course_teetype').text(course.tee_type);
 		$('#course_established').text(course.established);
 		$('#course_description').text(course.description);
-        $('#play-link').attr('href', '/hole_detail/'+course.id+'/1');
+
+        $.ajax({
+            url: '/hole/bycourseid/'+course.id,
+            dataType: 'json',
+            success: holesResponse
+        });
 	}
+
+    function holesResponse(result){
+        var hole = result.rows[0];
+        $('#play-link').attr('href', '/hole_detail/'+course.id+'/'+hole.id);
+    }
+
 
 });
 </script>
