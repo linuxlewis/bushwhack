@@ -23,14 +23,15 @@
 
 <% if (parseInt(hole_id) > 1) { %>
 <li>
-	<a id="holeprev" href="/hole_detail/<%- course_id %>/<%- (parseInt(hole_id) - 1)  %>" data-ajax="false" data-theme="a" data-icon="arrow-l" data-role="button">&nbsp;HoleNumber</a></li>
+<h2>
+	<a id="holeprev" href="/hole_detail/<%- course_id %>/<%- (parseInt(hole_id) - 1)  %>" data-ajax="false" data-theme="a" data-icon="arrow-l" data-role="button">&nbsp;HoleNumber</a></li></h2>
 <% } %>
 
 
 <% if (parseInt(hole_id) < 5) { %>
 <li>
-
-	<a id="holenext" href="/hole_detail/<%- course_id %>/<%- (parseInt(hole_id) + 1)  %>" data-ajax="false" data-theme="a" data-icon="arrow-r" data-role="button">&nbsp;HoleNumber</a></li>
+<h2>
+	<a id="holenext" href="/hole_detail/<%- course_id %>/<%- (parseInt(hole_id) + 1)  %>" data-ajax="false" data-theme="a" data-icon="arrow-r" data-role="button">&nbsp;HoleNumber</a></li></h2>
 <% } %>
 </ul>
 </div>
@@ -97,16 +98,16 @@ $(document).bind('pageinit', function(){
 			if (parseInt(hole.hole_number) < 5) {
 				$('#holenext').text('Hole #' + (parseInt(hole.hole_number) + 1)).button('refresh');
 				//$('#holenext').button('refresh');
-                $('#holenext').bind('create', function(){
-                    $('#holenext').button('refresh');
-                });
+                //$('#holenext').bind('create', function(){
+                 //   $('#holenext').button('refresh');
+                //});
 			}
 			if (parseInt(hole.hole_number) > 1) {
 				$('#holeprev').text('Hole #' + (parseInt(hole.hole_number) - 1)).button('refresh');
 				//$('#holeprev').button('refresh');
-                $('#holeprev').bind('create', function(){
-                    $('#holeprev').button('refresh');
-                });
+                //$('#holeprev').bind('create', function(){
+                 //   $('#holeprev').button('refresh');
+                //});
 			}
 			
 			//calculate center of map
