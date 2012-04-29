@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>BushWhack.com</title>
+
+<!-- begin css -->
+<link rel="stylesheet" href="/assets/css/defaltwithgreen.min.css" />
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile.structure-1.1.0.min.css" />
+<link rel="stylesheet" href="/assets/css/styles.css" />
+
+<!-- begin scripts -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
+
+<!-- fires map script -->
+<script>
+
+    $('#map').live('pagecreate',function(event){
+        initialize();
+        addruler();
+    });
+
+</script>
+<!-- end scripts -->
+
+</head>
+<!-- end head -->
+
+
+<!-- begin body -->
+<body>
+
+    <%- body %>
+
+</body>
+
+<script src="http://maps.google.com/maps/api/js?sensor=false&libraries=geometry"></script>
+<script src="/assets/js/labels.js"></script>
+<script src="/assets/js/ruler.js"></script>
+<script src="/assets/js/course-map.js"></script>
+
+</html>

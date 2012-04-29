@@ -16,7 +16,7 @@ exports.mapRoutes = function(app){
     });
 
     app.get('/find', function(req, res){
-
+        res.render('find.html', {layout:'mobile_layout.html'});
     });
 
 }

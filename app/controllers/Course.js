@@ -1,4 +1,5 @@
 var course = require('../models/Course.js');
+var util = require('util');
 
 exports.mapRoutes = function(app){
 
