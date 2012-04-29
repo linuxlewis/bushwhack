@@ -3,15 +3,37 @@
 
 <script type="text/javascript">
 
+var geocoder = new google.maps.Geocoder();
+var map;
+var latlng = new google.maps.LatLng(43.034979,-89.502284);
+
+
 $(document).ready(function(){
 
-    $('#map_canvas').gmap();
+    //$('#map_canvas').gmap();
+
+    var myOptions = {
+        zoom: 20,
+        center: latlng,
+        mapTypeId: google.maps.MapTypeId.SATELLITE,
+        scrollwheel: false,
+        draggable: true,
+        mapTypeControl: false,
+        navigationControl: true,
+        streetViewControl: false,
+        panControl: false,
+        scaleControl: true,
+        navigationControlOptions: {
+            style: google.maps.NavigationControlStyle.LARGE,
+            position: google.maps.ControlPosition.RIGHT_TOP
+        }
+    };
+
+	
+    map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+
 
 });
-
-
-
-
 
 </script>
 
