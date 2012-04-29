@@ -12,9 +12,9 @@ function Label(opt_options) {
 
     // Label specific
     var span = this.span_ = document.createElement('span');
-    span.style.cssText = 'position: relative; left: 0%; top: -100px; ' +
+    span.style.cssText = 'position: relative; left: 0%; top: -50px; ' +
         'white-space: nowrap; border: 0px; font-family:arial; font-weight:bold;' +
-        'padding: 55 px; color: #ffffff; background-color: #000000; '+
+        'padding: 25 px; color: #ffffff; background-color: #000000; '+
         'font-weight: bold; opacity: .75; '+
         'filter: alpha(opacity=75); '+
         '-ms-filter: "alpha(opacity=75)"; '+
