@@ -4,21 +4,21 @@
         {
             geo_position_js.getCurrentPosition(gpsSuccess,
                 function(){//handle error
-                    alert('error');
+             //       alert('error');
                 });
             //alert('hey');
 
         }
         else
         {
-            alert('boo');
+            //alert('boo');
             //gps not available
 
         }
     });
 
     function gpsSuccess(position){
-        alert('query');
+        //alert('query');
         var url = 'http://bushwhack.co/loc/near/'+position.coords.latitude + '/' + position.coords.longitude;
         $.ajax({
             url: url,
@@ -37,7 +37,7 @@
     }
 
     function locationResponse(result){
-        alert(result.rows.toString());
+        //alert(result.rows.toString());
         for (var id in result.rows){
             var course = result.rows[id]; 
             $('#course-list').append('<li><a href=\'/course_detail/'+ course.id + '\'>' + course.name + '</a></li>');
