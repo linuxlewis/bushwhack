@@ -4,21 +4,25 @@
 */
 
 
-function addruler() {
+function addruler(lat1, lon1, lat2, lon2) {
 
 /*
 var teePosition = new google.maps.LatLng(43.034942,-89.502696);
 var midPosition = new google.maps.LatLng(43.035002,-89.50228);
 var holePosition = new google.maps.LatLng(43.035034,-89.501778);
+
 */
+    var position1 = new google.maps.LatLng(lat1 ,lon1);
+    var position2 = new google.maps.LatLng(lat2, lon2):
+
 	var ruler1 = new google.maps.Marker({
-		position: map.getCenter(),
+		position: position1,
 		map: map,
 		draggable: true
 	});
 
 	var ruler2 = new google.maps.Marker({
-		position: map.getCenter(),
+		position: position2,
 		map: map,
 		draggable: true
 	});
