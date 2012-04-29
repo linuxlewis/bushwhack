@@ -34,14 +34,19 @@ exports.findByLocationId = function(id, callback){
    
    
 /*
-Sample Insert:
 INSERT INTO courses
-    (location_id, name, lat, lng, earthloc)
+(location_id, name, lat, lng, earthloc, established, tee_type, description, target_type, course_distance, num_holes)
 VALUES (
-	2,
-	'Elver Park',
-	43.037148, -89.502077,
-	ll_to_earth(43.037148, -89.502077)
+2,
+'Course Name',
+43.037148, -89.502077,
+ll_to_earth(43.037148, -89.502077),
+'1901',
+'tee type',
+'description',
+'target type',
+'5,000 ft',
+18
 );
 */
 }
