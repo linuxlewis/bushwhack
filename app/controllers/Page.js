@@ -1,4 +1,6 @@
 
+var request = require('request');
+
 exports.mapRoutes = function(app){
 
     app.get('/', function(req, res){
