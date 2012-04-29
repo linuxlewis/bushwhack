@@ -40,11 +40,13 @@ var holePosition = new google.maps.LatLng(43.035034,-89.501778);
 	});
 	rulerpoly.setMap(map);
 
+	/*
     centerLat = (position1.lat() + position2.lat()) / 2;
 	centerLng = (position1.lng() + position2.lng()) / 2;
 	var latlng = new google.maps.LatLng(centerLat,centerLng);
 
     map.setCenter(latlng);
+	*/
 
 
 	ruler1label.set('text', 'me');

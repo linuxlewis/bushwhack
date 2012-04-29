@@ -117,11 +117,14 @@ $(document).bind('pageinit', function(){
 			//calculate center of map
 			centerLat = (holeLat + teeLat) / 2;
 			centerLng = (holeLng + teeLng) / 2;
-			var latlng = new google.maps.LatLng(centerLat,centerLng);
+			var mapCenterLL = new google.maps.LatLng(centerLat,centerLng);
+			var holeLL = new google.maps.LatLng(holeLat, holeLng);
+			var teeLL = new google.maps.LatLng(teeLat, teeLng);
+			var bounds = new google.maps.LatLngBounds(teeLL, holeLL);
 
 			var myOptions = {
 				zoom: 19,
-				center: latlng,
+				center: mapCenterLL,
 				mapTypeId: google.maps.MapTypeId.SATELLITE,
 				scrollwheel: false,
 				draggable: false,
@@ -136,7 +139,9 @@ $(document).bind('pageinit', function(){
 				}
 			};
 			map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+	
 			addruler(teeLat, teeLng, holeLat, holeLng);
+			map.fitBounds(bounds);
 		}
 	}
 
