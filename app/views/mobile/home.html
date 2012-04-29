@@ -7,12 +7,17 @@
 <ul data-role="listview" data-divider-theme="a" data-inset="true">
 <li data-role="list-divider" role="heading">Do you want to</li>
 <li data-theme="a"><a href="/find" data-transition="slide">Find a course</a></li>
-<li data-theme="a"><a href="#course_location" data-transition="slide">Find courses near you</a></li>
+<li data-theme="a"><a href="/find" data-transition="slide">Find courses near you</a></li>
 <li data-theme="a"><a href="#course_search" data-transition="slide">Search all courses</a></li>
 </ul>
 
-<a data-theme="a" data-role="button" data-transition="fade" data-ajax='false' href="/auth/facebook/login">Log In with Facebook</a>
-
+<% if (!name){%>
+    <a data-theme="a" data-role="button" data-transition="fade" data-ajax='false' href="/auth/facebook/login">Log In with Facebook</a>    
+<%}
+else{%>
+    <h4>Hi <%- name %></h4>
+    <a data-theme="a" data-role="button" data-transition="fade" data-ajax='false' href="/auth/facebook/logout">Log out of Facebook</a>
+<%}%>
 </div>
 <!-- end login page content -->
 
