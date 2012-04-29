@@ -22,4 +22,8 @@ exports.mapRoutes = function(app){
         res.render('mobile/find.html', {layout:'mobile_layout.html'});
     });
 
+    app.get('/course_detail', function(req, res){
+        res.render('mobile/course_detail.html', {layout:'mobile_layout.html'});
+    });
+
 }

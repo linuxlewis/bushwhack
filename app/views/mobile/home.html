@@ -1,0 +1,36 @@
+<div data-role="page" id="login">
+
+<!-- begin login page header -->
+<div data-theme="a" data-role="header">
+<h3>Header</h3>
+</div>
+<!-- end login page header -->
+
+<!-- begin login page content -->
+<div data-role="content">
+
+<!-- begin login page nav
+<div data-role="navbar" data-iconpos="top">
+<ul>
+<li><a href="#home" data-theme="a" data-icon="" class="ui-btn-active">Home</a></li>
+</ul>
+</div> -->
+
+<ul data-role="listview" data-divider-theme="a" data-inset="true">
+<li data-role="list-divider" role="heading">Do you want to</li>
+<li data-theme="a"><a href="/find" data-transition="slide">Find a course</a></li>
+<li data-theme="a"><a href="#course_location" data-transition="slide">Find courses near you</a></li>
+<li data-theme="a"><a href="#course_search" data-transition="slide">Search all courses</a></li>
+</ul>
+
+<a data-theme="a" data-role="button" data-transition="fade" data-ajax='false' href="/auth/facebook/login">Log In with Facebook</a>
+
+</div>
+<!-- end login page content -->
+
+<div data-theme="a" data-role="footer">
+<h3>Footer</h3>
+</div>
+
+</div>
+
