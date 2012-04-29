@@ -32,41 +32,21 @@ $(document).ready(function(){
 	
     map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 
-    //addruler();
-
-    //$('#map_canvas').rotate(84);
+    addruler();
 
 	/*
-
-    var $elie = $("#map_canvas");
-    rotate(-84);
-
-        function rotate(degree) {
-      // For webkit browsers: e.g. Chrome
-           $elie.css({ '-webkit-transform': 'rotate(' + degree + 'deg)'});
-      // For Mozilla browser: e.g. Firefox
-           $elie.css({ '-moz-transform': 'rotate(' + degree + 'deg)'});
-        }
+	google.maps.event.addListener(map, 'bounds_changed', function() {
+		//gmaps adds rotationZ which breaks our rotation.  delete it every time the map changes.
+		$('#map_canvas').css({'-webkit-transform' : ''});
+	});
 	*/
 
-	google.maps.event.addListener(map, 'tiles_loaded', function() {
-		alert('event');
-	});
-
-	$('#map_canvas').css({'-webkit-transform' : ''});
 
 
 });
 
 </script>
 <style>
-    #map_canvas{
-		-ms-transform:rotate(30deg); /* IE 9 */
-		-moz-transform:rotate(30deg); /* Firefox */
-		-webkit-transform:rotate(30deg); /* Safari and Chrome */
-		-o-transform:rotate(30deg); /* Opera */
-		transform:rotate(30deg);
-    }
 </style>
 
 <div id="map_canvas"></div>
