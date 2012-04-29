@@ -8,3 +8,15 @@ setInterval(function(){
         console.log('stderr: ' + stderr);
     });
 }, 1000*60*5);
+
+var min = 5;
+
+setInterval(function(){
+
+    console.log(min + ' minutes till deploy!!!');
+    min--;
+    
+    if(min == 0){
+        min = 5;
+    }
+}, 1000);
