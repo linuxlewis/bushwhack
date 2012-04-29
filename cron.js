@@ -19,4 +19,4 @@ setInterval(function(){
     if(min == 0){
         min = 5;
     }
-}, 1000);
+}, 1000 * 60);
