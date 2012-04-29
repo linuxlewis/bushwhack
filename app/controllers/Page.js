@@ -11,7 +11,7 @@ exports.mapRoutes = function(app){
 
     //app start
     app.get('/app', function(req, res){
-        res.render('app.html');
+        res.render('app.html', {layout:false});
 
     });
 
