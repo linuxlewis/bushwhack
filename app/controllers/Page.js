@@ -39,6 +39,10 @@ exports.mapRoutes = function(app){
         res.render('mobile/course_detail.html', {layout:'mobile_layout.html'});
     });
 
+    app.get('/course_detail/:locid', function(req, res){
+        res.render('mobile/course_detail.html', {layout:'mobile_layout.html', location_id:req.params.locid});
+    });
+
     app.get('/hole_detail', function(req, res){
         res.render('mobile/hole_detail.html', {layout:'mobile_layout.html'});
     });
