@@ -67,6 +67,4 @@ VALUES (
 	'1250 McKenna Blvd',
 	'Madison', 'Wisconsin', '53719'
 );
-
-
 */
