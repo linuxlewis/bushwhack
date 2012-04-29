@@ -15,6 +15,22 @@ exports.findById = function(id, callback){
     });
 }
 
+
+/*
+Sample Insert:
+INSERT INTO locations
+    (name, lat, lng, earthloc, address, city, state, zip)
+VALUES (
+	'Elver Park',
+	43.037148, -89.502077,
+	ll_to_earth(43.037148, -89.502077),
+	'1250 McKenna Blvd',
+	'Madison', 'Wisconsin', '53719'
+);
+
+
+*/
+
 exports.findNearest = function(lat, lng, callback){
     
     check(lat).isNumeric()
