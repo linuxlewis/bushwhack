@@ -1,3 +1,10 @@
+<!-- begin page -->
+<div data-role="page" id="hole_detail">
+
+<script src="http://maps.google.com/maps/api/js?sensor=false&libraries=geometry"></script>
+<script src="/assets/js/labels.js"></script>
+<script src="/assets/js/ruler.js"></script>
+<script src="/assets/js/course-map.js"></script>
 <script type="text/javascript">
 
 var geocoder = new google.maps.Geocoder();
@@ -27,31 +34,6 @@ $(document).ready(function() {
 	
     map = new google.maps.Map(document.getElementById("map_canvass"), myOptions);
 
-
-/*
-    //polylines
-    var holeOneCoordinates = [
-        new google.maps.LatLng(43.034942,-89.502696),
-        new google.maps.LatLng(43.035002,-89.502288),
-        new google.maps.LatLng(43.035033,-89.501811),
-        new google.maps.LatLng(43.035034,-89.501778),
-        new google.maps.LatLng(43.03502,-89.501758),        
-    ];
-
-    //style polylines
-    var holeOne = new google.maps.Polyline({
-        path: holeOneCoordinates,
-        strokeColor: "#FF0000",
-        strokeOpacity: 1.0,
-        strokeWeight: 2
-    });
-
-    //set the polylines
-    holeOne.setMap(map);
-*/
-
-
-
     //markers
     var hole = [
         ['No. 1 Tee', 43.034942,-89.502696, 5],
@@ -61,7 +43,6 @@ $(document).ready(function() {
         ['No. 1 Back', 43.03502,-89.501758, 1]
     ];
     
-
     //loop through marker array
     for (var i = 0; i < hole.length; i++) {
         var marker = new google.maps.Marker({
@@ -86,9 +67,6 @@ $(document).ready(function() {
 //end main function
 
 </script>
-
-<!-- begin page -->
-<div data-role="page" id="hole_detail">
 
 <!-- begin content -->
 <div data-role="content">
