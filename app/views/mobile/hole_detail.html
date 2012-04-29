@@ -7,12 +7,31 @@
 <script type="text/javascript">
 
 var geocoder = new google.maps.Geocoder();
-var map;
+var map, centerLat, centerLng, holeLat, holeLng, teeLat, teeLng;
 
 //elver park first hole midpoint
 var latlng = new google.maps.LatLng(43.036948,-89.502177);
 
 $(document).ready(function(){
+
+	$.ajax({
+		url: '/hole/' + <%- hole_id %>,
+		dataType: 'json',
+		success: holeResponse
+	});
+
+	$.ajax({
+		url: '/hole/' + <%- hole_id %>,
+		dataType: 'json',
+		success: holeResponse
+	});
+
+	function holeResponse(result) {
+		var hole = result.rows[0];
+		//alert('hole_lat = ' + hole.hole_lat);
+		holeLat = hole.hole_lat;
+		holeLng = hole.hole_lng;
+	};
 
     //old map hook for jquery map plugin
     //$('#map_canvas').gmap();
@@ -62,7 +81,7 @@ $(document).ready(function(){
 <div data-role="navbar" data-iconpos="top">
 <ul>
 <!-- <li><a href="#" data-theme="a" data-icon="plus" data-role="button">Zoom</a></li> -->
-<li><a href="/hole_next" data-ajax="false" data-theme="a" data-icon="arrow-r" data-role="button">Hole No. 2</a></li>
+<li><a href="/hole_next" data-ajax="false" data-theme="a" data-icon="arrow-r" data-role="button">Hole No. 1</a></li>
 </ul>
 </div>
 

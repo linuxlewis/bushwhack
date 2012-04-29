@@ -22,7 +22,7 @@ exports.findById = function(id, callback){
 exports.findByCourseId = function(id, callback){
    check(id).notEmpty().isInt();
    
-   client.query("SELECT * FROM holes WHERE course_id = " + id , function(err, result){
+   client.query("SELECT * FROM holes WHERE course_id = " + id + " ORDER BY hole_number", function(err, result){
        if(err){
             callback(err, null);
        }
