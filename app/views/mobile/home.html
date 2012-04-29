@@ -4,6 +4,10 @@
 <!-- begin content -->
 <div data-role="content">
 
+<% if (typeof name !== 'undefined'){%>
+    <h4>Hi <%- name %> welcome to Bushwhack Apps</h4>
+<%}
+
 <ul data-role="listview" data-divider-theme="a" data-inset="true">
 <li data-role="list-divider" role="heading">Do you want to</li>
 <li data-theme="a"><a href="/find" data-ajax='false' data-transition="slide">Find a course</a></li>
@@ -15,7 +19,6 @@
     <a data-theme="a" data-role="button" data-transition="fade" data-ajax='false' href="/auth/facebook/login">Log In with Facebook</a>    
 <%}
 else{%>
-    <h4>Hi <%- name %></h4>
     <a data-theme="a" data-role="button" data-transition="fade" data-ajax='false' href="/auth/facebook/logout">Log out of Facebook</a>
 <%}%>
 </div>
