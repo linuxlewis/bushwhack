@@ -2,7 +2,6 @@ var db = require('./model');
 var client = db.client;
 
 exports.findById = function(id, callback){
-    
     check(id).notEmpty().isInt();
     
     client.query("SELECT * FROM locations WHERE id = " + id, function(err, result){
@@ -32,7 +31,6 @@ VALUES (
 */
 
 exports.findNearest = function(lat, lng, callback){
-    
     check(lat).isNumeric()
     check(lng).isNumeric()
     
@@ -53,12 +51,10 @@ exports.findNearest = function(lat, lng, callback){
             callback(null, result);
         }
     });
-
 }
 
 
 exports.findCoursesByLocationId = function(id, callback){
-   
    check(id).notEmpty().isInt();
    
    client.query("SELECT * FROM courses WHERE location_id = " + id , function(err, result){
@@ -68,6 +64,5 @@ exports.findCoursesByLocationId = function(id, callback){
        else{
            callback(null, result);
        }
-
    });
 }
