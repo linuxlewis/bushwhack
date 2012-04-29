@@ -7,10 +7,10 @@
 <script type="text/javascript">
 
 var geocoder = new google.maps.Geocoder();
-var map, centerLat, centerLng, holeLat, holeLng, teeLat, teeLng;
+var map, centerLat, centerLng, holeLat, holeLng, teeLat, teeLng, mapCenter, holes;
 
 //elver park first hole midpoint
-var latlng = new google.maps.LatLng(43.036948,-89.502177);
+//var latlng = new google.maps.LatLng(43.036948,-89.502177);
 
 $(document).ready(function(){
 
@@ -21,9 +21,9 @@ $(document).ready(function(){
 	});
 
 	$.ajax({
-		url: '/hole/' + <%- hole_id %>,
+		url: '/tee/byholeid/' + <%- hole_id %>,
 		dataType: 'json',
-		success: holeResponse
+		success: teeResponse
 	});
 
 	function holeResponse(result) {
@@ -31,32 +31,57 @@ $(document).ready(function(){
 		//alert('hole_lat = ' + hole.hole_lat);
 		holeLat = hole.hole_lat;
 		holeLng = hole.hole_lng;
-	};
+		$('#holenext').text('Hole #' + (parseInt(hole.hole_number) + 1));
+		makeMap();
+	}
+
+	function teeResponse(result) {
+		var tee = result.rows[0];
+		//alert('tee_lat = ' + tee.lat);
+		teeLat = tee.lat;
+		teeLng = tee.lng;
+		makeMap();
+	}
+
+	function makeMap() {
+		if (
+			(typeof holeLat != 'undefined')	&&
+			(typeof holeLng != 'undefined')	&&
+			(typeof teeLat != 'undefined')	&&
+			(typeof teeLng != 'undefined')
+		) {
+			//alert("map is ready!");
+			centerLat = (holeLat + teeLat) / 2;
+			centerLng = (holeLng + teeLng) / 2;
+			var latlng = new google.maps.LatLng(centerLat,centerLng);
+
+			var myOptions = {
+				zoom: 19,
+				center: latlng,
+				mapTypeId: google.maps.MapTypeId.SATELLITE,
+				scrollwheel: false,
+				draggable: false,
+				mapTypeControl: false,
+				navigationControl: true,
+				streetViewControl: false,
+				panControl: false,
+				scaleControl: true,
+				navigationControlOptions: {
+					style: google.maps.NavigationControlStyle.SMALL,
+					position: google.maps.ControlPosition.RIGHT_TOP
+				}
+			};
+			map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+			addruler();
+		}
+	}
 
     //old map hook for jquery map plugin
     //$('#map_canvas').gmap();
 
-    var myOptions = {
-        zoom: 19,
-        center: latlng,
-        mapTypeId: google.maps.MapTypeId.SATELLITE,
-        scrollwheel: false,
-        draggable: false,
-        mapTypeControl: false,
-        navigationControl: true,
-        streetViewControl: false,
-        panControl: false,
-        scaleControl: true,
-        navigationControlOptions: {
-            style: google.maps.NavigationControlStyle.SMALL,
-            position: google.maps.ControlPosition.RIGHT_TOP
-        }
-    };
 
-    map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 
     //adds distance calculator
-    addruler();
 
 	/*
 	google.maps.event.addListener(map, 'bounds_changed', function() {
@@ -81,7 +106,7 @@ $(document).ready(function(){
 <div data-role="navbar" data-iconpos="top">
 <ul>
 <!-- <li><a href="#" data-theme="a" data-icon="plus" data-role="button">Zoom</a></li> -->
-<li><a href="/hole_next" data-ajax="false" data-theme="a" data-icon="arrow-r" data-role="button">Hole No. 1</a></li>
+<li><a id="holenext" href="/hole_detail/<%- course_id %>/<%- (parseInt(hole_id) + 1)  %>" data-ajax="false" data-theme="a" data-icon="arrow-r" data-role="button">&nbsp;HoleNumber</a></li>
 </ul>
 </div>
 
