@@ -46,4 +46,12 @@ exports.mapRoutes = function(app){
     app.get('/hole_detail', function(req, res){
         res.render('mobile/hole_detail.html', {layout:'mobile_layout.html'});
     });
+
+    app.get('/hole_next', function(req, res){
+        res.render('mobile/hole_next.html', {layout:'mobile_layout.html'});
+    });
+
+    app.get('/next_hole', function(req, res){
+        res.render('mobile/next_hole.html', {layout:'mobile_layout.html'});
+    });
 }
