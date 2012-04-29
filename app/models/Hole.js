@@ -29,4 +29,5 @@ exports.findByCourseId = function(id, callback){
        else{
            callback(null, result);
        }
-});
+	});
+}
