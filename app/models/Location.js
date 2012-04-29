@@ -29,7 +29,7 @@ exports.findNearest = function(lat, lng, callback){
         "earth_distance(earthloc, ll_to_earth(" + lat + ", " + lng + ")) as distance " +
         "FROM locations " +
         "WHERE earth_box(ll_to_earth(" + lat + ", " + lng + "), " + dist + ") @> earthloc " +
-        "ORDER BY distance LIMIT 10";  
+        "ORDER BY distance LIMIT 25";  
     
     client.query(sql, function(err, result){
         if(err){
