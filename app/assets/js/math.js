@@ -20,6 +20,6 @@ function calculateDegree(lat1, lon1, lat2, lon2){
 
 console.log(calculateDegree(43.035034,-89.501778, 43.034942,-89.502696));
 var value = calculateDegree(43.035034,-89.501778, 43.034942,-89.502696);
-var rotation = 360 - (360 + 90 - value); 
+var rotation = 360 - (360 + 90 - value) ; 
 
 console.log(rotation);
