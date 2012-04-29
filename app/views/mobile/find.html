@@ -16,7 +16,7 @@
     });
 
     function gpsSuccess(position){
-        var url = 'http://bushwhack.co/loc/'+position.coords.latitude + '/' + position.coords.longitude;
+        var url = 'http://bushwhack.co/loc/near/'+position.coords.latitude + '/' + position.coords.longitude;
         $.ajax({
             url: url,
             dataType: 'json',
@@ -24,7 +24,7 @@
         });
     }
     function gpsFail(){
-        var url = 'http://bushwhack.co/loc/'+position.coords.latitude + '/' + position.coords.longitude;
+        var url = 'http://bushwhack.co/loc/near/43.075158/-89.503212';
         //43.075158,-89.503212
         $.ajax({
             url: url,
