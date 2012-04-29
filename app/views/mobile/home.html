@@ -11,7 +11,7 @@
 <li data-theme="a"><a href="#course_search" data-transition="slide">Search all courses</a></li>
 </ul>
 
-<% if (!name){%>
+<% if (typeof name == 'undefined'){%>
     <a data-theme="a" data-role="button" data-transition="fade" data-ajax='false' href="/auth/facebook/login">Log In with Facebook</a>    
 <%}
 else{%>
