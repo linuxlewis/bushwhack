@@ -37,7 +37,7 @@ exports.mapRoutes = function(app){
     });
     
     
-    app.get('/loc/:id/courses', findByLocationId);
+    app.get('/loc/:id/courses', findByLocationId(req, res));
     
 
 }
