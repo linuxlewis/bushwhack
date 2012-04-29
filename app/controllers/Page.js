@@ -26,4 +26,7 @@ exports.mapRoutes = function(app){
         res.render('mobile/course_detail.html', {layout:'mobile_layout.html'});
     });
 
+    app.get('/hole_detail', function(req, res){
+        res.render('mobile/hole_detail.html', {layout:'mobile_layout.html'});
+    });
 }
