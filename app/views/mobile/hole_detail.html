@@ -51,10 +51,16 @@ $(document).bind('pageinit', function(){
 			if (parseInt(hole.hole_number) < 5) {
 				$('#holenext').text('Hole #' + (parseInt(hole.hole_number) + 1)).button('refresh');
 				//$('#holenext').button('refresh');
+                $('#holenext').bind('create', function(){
+                    $('#holenext').button('refresh');
+                });
 			}
 			if (parseInt(hole.hole_number) > 1) {
 				$('#holeprev').text('Hole #' + (parseInt(hole.hole_number) - 1)).button('refresh');
 				//$('#holeprev').button('refresh');
+                $('#holeprev').bind('create', function(){
+                    $('#holeprev').button('refresh');
+                });
 			}
 			
 			//calculate center of map
