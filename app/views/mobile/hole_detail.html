@@ -1,6 +1,52 @@
 <!-- HOLE NUMBER 1 -->
 
 
+
+<style type="text/css">
+#map_canvas {width: 80%; height: 500px;}
+</style>
+
+<!-- begin page -->
+<div data-role="page" id="hole_detail">
+
+<h1> Hole #<%- hole_id %> </h1>
+
+<div id="map_canvas"></div>
+
+<!-- begin content -->
+<div data-role="content">
+
+<div data-role="navbar" data-iconpos="top">
+<ul>
+<!-- <li><a href="#" data-theme="a" data-icon="plus" data-role="button">Zoom</a></li> -->
+
+
+<% if (parseInt(hole_id) > 1) { %>
+<li>
+	<a id="holeprev" href="/hole_detail/<%- course_id %>/<%- (parseInt(hole_id) - 1)  %>" data-ajax="false" data-theme="a" data-icon="arrow-l" data-role="button">&nbsp;HoleNumber</a></li>
+<% } %>
+
+
+<% if (parseInt(hole_id) < 5) { %>
+<li>
+
+	<a id="holenext" href="/hole_detail/<%- course_id %>/<%- (parseInt(hole_id) + 1)  %>" data-ajax="false" data-theme="a" data-icon="arrow-r" data-role="button">&nbsp;HoleNumber</a></li>
+<% } %>
+</ul>
+</div>
+
+</div>
+<!-- end content -->
+
+<!-- begin page footer -->
+<div data-theme="a" data-role="footer">
+<img style="width: 100%;" src="/assets/img/footer.jpg" />
+</div>
+<!-- end page footer -->
+
+</div>
+<!-- end page -->
+
 <!-- begin script -->
 <script type="text/javascript">
 
@@ -101,47 +147,3 @@ $(document).bind('pageinit', function(){
 </script>
 <!-- end script -->
 
-<style type="text/css">
-#map_canvas {width: 80%; height: 500px;}
-</style>
-
-<!-- begin page -->
-<div data-role="page" id="hole_detail">
-
-<h1> Hole #<%- hole_id %> </h1>
-
-<div id="map_canvas"></div>
-
-<!-- begin content -->
-<div data-role="content">
-
-<div data-role="navbar" data-iconpos="top">
-<ul>
-<!-- <li><a href="#" data-theme="a" data-icon="plus" data-role="button">Zoom</a></li> -->
-
-
-<% if (parseInt(hole_id) > 1) { %>
-<li>
-	<a id="holeprev" href="/hole_detail/<%- course_id %>/<%- (parseInt(hole_id) - 1)  %>" data-ajax="false" data-theme="a" data-icon="arrow-l" data-role="button">&nbsp;HoleNumber</a></li>
-<% } %>
-
-
-<% if (parseInt(hole_id) < 5) { %>
-<li>
-
-	<a id="holenext" href="/hole_detail/<%- course_id %>/<%- (parseInt(hole_id) + 1)  %>" data-ajax="false" data-theme="a" data-icon="arrow-r" data-role="button">&nbsp;HoleNumber</a></li>
-<% } %>
-</ul>
-</div>
-
-</div>
-<!-- end content -->
-
-<!-- begin page footer -->
-<div data-theme="a" data-role="footer">
-<img style="width: 100%;" src="/assets/img/footer.jpg" />
-</div>
-<!-- end page footer -->
-
-</div>
-<!-- end page -->
