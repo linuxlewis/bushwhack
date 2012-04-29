@@ -1,6 +1,7 @@
 var Location = require('../models/Location.js');
 var Course = require('../models/Course.js');
 
+/*
 var findByLocationId = function(req, res){
     Course.findByLocationId(req.params.id, function(err, result){
         if(err){
@@ -10,6 +11,7 @@ var findByLocationId = function(req, res){
             res.json(result);
         }
 };
+*/
 
 
 exports.mapRoutes = function(app){
@@ -37,7 +39,7 @@ exports.mapRoutes = function(app){
     });
     
     
-    app.get('/loc/:id/courses', findByLocationId(req, res));
+    //app.get('/loc/:id/courses', findByLocationId(req, res));
     
 
 }
