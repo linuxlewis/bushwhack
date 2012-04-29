@@ -49,11 +49,11 @@ $(document).ready(function(){
 		) {
 			if (parseInt(hole.hole_number) < 5) {
 				$('#holenext').text('Hole #' + (parseInt(hole.hole_number) + 1));
-				//$('#holenext').button('refresh');
+				$('#holenext').button('refresh');
 			}
 			if (parseInt(hole.hole_number) > 1) {
 				$('#holeprev').text('Hole #' + (parseInt(hole.hole_number) - 1));
-				//$('#holeprev').button('refresh');
+				$('#holeprev').button('refresh');
 			}
 			
 			//calculate center of map
