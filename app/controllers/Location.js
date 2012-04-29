@@ -1,4 +1,7 @@
 var Location = require('../models/Location.js');
+var Course = require('../models/Course.js');
+
+
 exports.mapRoutes = function(app){
     app.get('/location/near/:lat/:lng', function(req, res){
 
