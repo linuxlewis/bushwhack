@@ -1,3 +1,92 @@
+<script type="text/javascript">
+
+var geocoder = new google.maps.Geocoder();
+var map;
+var latlng = new google.maps.LatLng(43.034979,-89.502284);
+
+//begin main function
+$(document).ready(function() {
+
+    var myOptions = {
+        zoom: 20,
+        center: latlng,
+        mapTypeId: google.maps.MapTypeId.SATELLITE,
+        scrollwheel: false,
+        draggable: true,
+        mapTypeControl: false,
+        navigationControl: true,
+        streetViewControl: false,
+        panControl: false,
+        scaleControl: true,
+        navigationControlOptions: {
+            style: google.maps.NavigationControlStyle.LARGE,
+            position: google.maps.ControlPosition.RIGHT_TOP
+        }
+    };
+
+	
+    map = new google.maps.Map(document.getElementById("map_canvass"), myOptions);
+
+
+/*
+    //polylines
+    var holeOneCoordinates = [
+        new google.maps.LatLng(43.034942,-89.502696),
+        new google.maps.LatLng(43.035002,-89.502288),
+        new google.maps.LatLng(43.035033,-89.501811),
+        new google.maps.LatLng(43.035034,-89.501778),
+        new google.maps.LatLng(43.03502,-89.501758),        
+    ];
+
+    //style polylines
+    var holeOne = new google.maps.Polyline({
+        path: holeOneCoordinates,
+        strokeColor: "#FF0000",
+        strokeOpacity: 1.0,
+        strokeWeight: 2
+    });
+
+    //set the polylines
+    holeOne.setMap(map);
+*/
+
+
+
+    //markers
+    var hole = [
+        ['No. 1 Tee', 43.034942,-89.502696, 5],
+        ['No. 1 Mid', 43.035002,-89.502288, 4],
+        ['No. 1 Front', 43.035033,-89.501811, 3],
+        ['No. 1 Hole', 43.035034,-89.501778, 2],
+        ['No. 1 Back', 43.03502,-89.501758, 1]
+    ];
+    
+
+    //loop through marker array
+    for (var i = 0; i < hole.length; i++) {
+        var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(hole[i][1], hole[i][2]),
+            map: map,
+          //  icon: image,
+            title: hole[i][0],
+            zIndex: hole[i][3]
+        });
+    }
+
+    //set initial marker
+    var marker = new google.maps.Marker({
+        position: latLng,
+        title: 'Point A',
+        map: map,
+        draggable: true
+    });
+  
+
+});
+//end main function
+
+</script>
+
 <!-- begin page -->
 <div data-role="page" id="hole_detail">
 
@@ -8,10 +97,7 @@
 <b>Hole No. 1, Par, Like</b>
 </div>
 
-
-<div id="map_container" onload="initialize()">
 <div id="map_canvas"></div>
-</div>
 
 
 <div data-role="navbar" data-iconpos="top">
