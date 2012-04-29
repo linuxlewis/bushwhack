@@ -39,7 +39,7 @@
     function locationResponse(result){
         alert(result.rows.toString());
         for (var course in result.rows){
-            alert(JSON.stringify(course);
+            alert(JSON.stringify(course));
             $('#course-list').append('<li><a href=\'/course_detail\'>' + course.name + '</a></li>');
         }
 
