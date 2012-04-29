@@ -22,6 +22,8 @@
             dataType: 'json',
             success:  locationResponse
         });
+        alert('query
+        ');
     }
     function gpsFail(){
         var url = 'http://bushwhack.co/loc/near/43.075158/-89.503212';
@@ -34,6 +36,7 @@
     }
 
     function locationResponse(result){
+        alert(result);
         for (var course in result.rows){
             $('course-list').append('<li><a href=\'/course_detail\'>' + course.name + '</a></li>');
         }
@@ -43,10 +46,6 @@
 <!-- begin page -->
 <div data-role="page" id="course_search">
 
-<!-- begin page header -->
-<a href="/home" data-theme="a">Home</a>
-</div>
-<!-- end page header -->
 
 <!-- begin content -->
 <div data-role="content">
