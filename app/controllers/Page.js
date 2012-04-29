@@ -11,12 +11,15 @@ exports.mapRoutes = function(app){
 
     //app start
     app.get('/app', function(req, res){
-        res.render('app.html', {layout:false});
+        res.render('mobile/index.html', {layout:'mobile_layout.html'});
+    });
 
+    app.get('/home', function(req, res){
+        res.render('mobile/home.html', {layout:'mobile_layout.html'});
     });
 
     app.get('/find', function(req, res){
-        res.render('find.html', {layout:'mobile_layout.html'});
+        res.render('mobile/find.html', {layout:'mobile_layout.html'});
     });
 
 }
