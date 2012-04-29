@@ -1,12 +1,6 @@
 <!-- begin page -->
 <div data-role="page" id="hole_detail">
 
-<!-- begin page header -->
-<div data-theme="a" data-role="header">
-<img style="width: 100%;" src="assets/img/header2.jpg" />
-</div>
-<!-- end page header -->
-
 <script type="text/javascript">
 
 var geocoder = new google.maps.Geocoder();
@@ -41,7 +35,17 @@ $(document).ready(function(){
     //addruler();
 
     //$('#map_canvas').rotate(84);
-    $('#map_canvas').css('-webkit-transform:rotate(-84deg)');
+
+    var $elie = $("#map_canvas");
+    rotate(-84);
+
+        function rotate(degree) {
+      // For webkit browsers: e.g. Chrome
+           $elie.css({ WebkitTransform: 'rotate(' + degree + 'deg)'});
+      // For Mozilla browser: e.g. Firefox
+           $elie.css({ '-moz-transform': 'rotate(' + degree + 'deg)'});
+        }
+
 
 });
 
@@ -61,12 +65,6 @@ $(document).ready(function(){
 
 </div>
 <!-- end content -->
-
-<!-- begin page footer -->
-<div data-theme="a" data-role="footer">
-<img style="width: 100%;" src="assets/img/footer.jpg" />
-</div>
-<!-- end page footer -->
 
 </div>
 <!-- end page -->
