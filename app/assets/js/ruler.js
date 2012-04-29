@@ -40,16 +40,25 @@ var holePosition = new google.maps.LatLng(43.035034,-89.501778);
 	});
 	rulerpoly.setMap(map);
 
-	ruler1label.set('text', 'Me');
+    centerLat = (position1.lat() + position2.lat()) / 2;
+	centerLng = (position1.lng() + position2.lng()) / 2;
+	var latlng = new google.maps.LatLng(centerLat,centerLng);
+
+    map.setCenter(latlng);
+
+
+	ruler1label.set('text', 'me');
     //distance( ruler1.getPosition().lat(), ruler1.getPosition().lng(), ruler2.getPosition().lat(), ruler2.getPosition().lng()));
 	ruler2label.set('text',distance( ruler1.getPosition().lat(), ruler1.getPosition().lng(), ruler2.getPosition().lat(), ruler2.getPosition().lng()));
 
 
+	/*
 	google.maps.event.addListener(ruler1, 'drag', function() {
 		rulerpoly.setPath([ruler1.getPosition(), ruler2.getPosition()]);
 		ruler1label.set('text',distance( ruler1.getPosition().lat(), ruler1.getPosition().lng(), ruler2.getPosition().lat(), ruler2.getPosition().lng()));
 		ruler2label.set('text',distance( ruler1.getPosition().lat(), ruler1.getPosition().lng(), ruler2.getPosition().lat(), ruler2.getPosition().lng()));
 	});
+    */
 
 	google.maps.event.addListener(ruler2, 'drag', function() {
 		rulerpoly.setPath([ruler1.getPosition(), ruler2.getPosition()]);
