@@ -3,14 +3,23 @@
 
 <script type="text/javascript">
 $(document).ready(function(){
+	//alert('ajax url "/course/bylocid/' + <%- location_id %> + '"');
+
 	$.ajax({
-		url: '/course/bylocid/' + locid,
+		url: '/course/bylocid/' + <%- location_id %>,
 		dataType: 'json',
 		success: coursesResponse
 	});
 
 
 	function coursesResponse(result) {
+		var course = result.rows[0];
+		$('#course_name').text(course.name);
+		$('#course_distance').text(course.course_distance);
+		$('#course_targettype').text(course.target_type);
+		$('#course_teetype').text(course.tee_type);
+		$('#course_established').text(course.established);
+		$('#course_description').text(course.description);
 	}
 
 });
@@ -22,12 +31,12 @@ $(document).ready(function(){
 
 <div id="course-content">
 <h2>Elver Park</h2>
-<p><strong>Location:</strong> Madison, Wis.</p>
-<strong>Course Distance:</strong> 4906 ft. - 6065 ft.</p>
-<strong>Target Type:</strong> Mach3</p>
-<strong>Tee Type:</strong> Concrete</p>
-<strong>Established:</strong> 1992</p>
-<strong>DGCourseReview.com says:</strong> "Follows cross country ski trail through grasslands and pine plantations. Elevation changes and vistas abound. Shelter house. Course pulled for snow sports from November to April."</p>
+<p><strong>Location:</strong>&nbsp;<span id="course_name">&nbsp;</span></p>
+<strong>Course Distance:</strong>&nbsp;<span id="course_distance">&nbsp;</span></p>
+<strong>Target Type:</strong>&nbsp;<span id="course_targettype">&nbsp;</span></p>
+<strong>Tee Type:</strong>&nbsp;<span id="course_teetype">&nbsp;</span></p>
+<strong>Established:</strong>&nbsp;<span id="course_established">&nbsp;</span></p>
+<strong>DGCourseReview.com says:</strong>&nbsp;<span id="course_description">&nbsp;</span></p>
 </div>
 
 </div>
