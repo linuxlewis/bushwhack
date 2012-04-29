@@ -108,7 +108,7 @@ $(document).bind('pageinit', function(){
                 });
 			}
 			if (parseInt(hole.hole_number) > 1) {
-				var label = 'Hole #' + (parseInt(hole.hole_number) - 1));
+				var label = 'Hole #' + (parseInt(hole.hole_number) - 1);
                 var button = '<a id="holeprev" href="/hole_detail/<%- course_id %>/<%- (parseInt(hole_id) - 1)  %>" data-ajax="false" data-theme="a" data-icon="arrow-l" data-role="button">'+ label + '</a>';
                 $('#li1').append(button);
                 $('#li1').button();
