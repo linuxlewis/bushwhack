@@ -13,7 +13,7 @@ var holePosition = new google.maps.LatLng(43.035034,-89.501778);
 
 */
     var position1 = new google.maps.LatLng(lat1 ,lon1);
-    var position2 = new google.maps.LatLng(lat2, lon2):
+    var position2 = new google.maps.LatLng(lat2, lon2);
 
 	var ruler1 = new google.maps.Marker({
 		position: position1,
