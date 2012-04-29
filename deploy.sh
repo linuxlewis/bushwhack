@@ -3,4 +3,4 @@
 git pull
 git push github master
 git push heroku master
-echo -e "\a"
+afplay Good_Evening.mp3
