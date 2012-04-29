@@ -24,7 +24,7 @@ exports.mapRoutes = function(app){
                     function(err, response, body){
                         if(!err){
                             var data = JSON.parse(body);
-                            res.render('mobile/find.html', {layout:'mobile_layout.html'}, {name:data.first_name});
+                            res.render('mobile/find.html', {layout:'mobile_layout.html', name:data.first_name});
                         }
                     });
         }
