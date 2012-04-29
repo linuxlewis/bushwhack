@@ -1,6 +1,20 @@
 <!-- begin page -->
 <div data-role="page" id="course_detail">
 
+<script type="text/javascript">
+$(document).ready(function(){
+	$.ajax({
+		url: '/course/bylocid/' + locid,
+		dataType: 'json',
+		success: coursesResponse
+	});
+
+
+	function coursesResponse(result) {
+	}
+
+});
+</script>
 <!-- begin content -->
 <div data-role="content">
 
