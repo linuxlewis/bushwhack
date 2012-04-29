@@ -38,7 +38,7 @@
     }
 
     function locationResponse(result){
-        alert(result);
+        alert(result.toString());
         for (var course in result.rows){
             $('course-list').append('<li><a href=\'/course_detail\'>' + course.name + '</a></li>');
         }
