@@ -9,12 +9,14 @@
 <!-- begin page -->
 <div data-role="page" id="hole_detail">
 
-<h1> Hole #<%- hole_id %> </h1>
 
 <div id="map_canvas"></div>
 
 <!-- begin content -->
 <div data-role="content">
+
+<h1> Hole #<%- hole_id %> </h1>
+
 
 <div data-role="navbar" data-iconpos="top">
 <ul>
@@ -96,14 +98,14 @@ $(document).bind('pageinit', function(){
 			(typeof teeLng != 'undefined')
 		) {
 			if (parseInt(hole.hole_number) < 5) {
-				$('#holenext').text('Hole #' + (parseInt(hole.hole_number) + 1));//.button('refresh');
+				$('#holenext').text('Hole #' + (parseInt(hole.hole_number) + 1)).trigger('create');//.button('refresh');
 				//$('#holenext').button('refresh');
                 $('#holenext').bind('create', function(){
                     $('#holenext').button('refresh');
                 });
 			}
 			if (parseInt(hole.hole_number) > 1) {
-				$('#holeprev').text('Hole #' + (parseInt(hole.hole_number) - 1));//.button('refresh');
+				$('#holeprev').text('Hole #' + (parseInt(hole.hole_number) - 1)).trigger('create');//.button('refresh');
 				//$('#holeprev').button('refresh');
                 $('#holeprev').bind('create', function(){
                     $('#holeprev').button('refresh');
