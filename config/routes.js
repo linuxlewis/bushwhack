@@ -60,9 +60,9 @@ module.exports = function(app){
     //tee routes
     app.get('/tee/new', Tee.new);
     app.post('/tee', Tee.create);
-    app.get('/tee/:id', Tee.show):
+    app.get('/tee/:id', Tee.show);
     app.get('/tee', Tee.index);
-    app.del('/tee/:id', Tee.delete):
+    app.del('/tee/:id', Tee.delete);
     app.get('/hole/:id/tee', Tee.tee_by_hole_id);
     //deprecated route
     app.get('/tee/byholeid/:id', Tee.tee_by_hole_id);
