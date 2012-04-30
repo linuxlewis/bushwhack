@@ -1,5 +1,4 @@
 module.exports = function(app, express){
-    
     //general config
     app.configure(function(){
         app.use(express.logger());

@@ -8,18 +8,20 @@ module.exports = function(app){
     var Location = require('../app/controllers/Location.js');
     var Hole = require('../app/controllers/Hole.js');
     var Tee = require('../app/controllers/Tee.js');
+    var User = require('../app/controllers/User.js');
+    var Auth = require('../app/controllers/Auth.js');
 
     //page routes
     app.get('/', Page.index);
 
     //mobile routes -- deprecated
     app.get('/app', MobilePage.app);
-    app.get('/home', MobilePage.home);
+    app.get('/home', MobilePage.menu);
     app.get('/find', MobilePage.find);
-    app.get('/course_detail' MobilePage.course_detail);
-    app.get('/course_detail/:locid', MobilePage.course_detail);
-    app.get('/hole_detail', MobilePage.hole_detail);
-    app.get('/hole_detail/:course_id/:hole_id', MobilePage.hole_detail);
+    app.get('/course_detail' MobilePage.course);
+    app.get('/course_detail/:id', MobilePage.course);
+    app.get('/hole_detail', MobilePage.hole);
+    app.get('/hole_detail/:course_id/:hole_id', MobilePage.hole);
     //mobile routes
     app.get('/mobile', MobilePage.app);
     app.get('/mobile/menu', MobilePage.menu);
