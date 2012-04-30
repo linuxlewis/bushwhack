@@ -12,7 +12,9 @@
         "request":"2.9.202",
         "pg":"0.6.17",
         "express-messages":"0.0.2",
-        "validator":"0.4.6-2"
+        "validator":"0.4.6-2",
+        "mocha":"1.0.2",
+        "should":"0.6.3"
     }
 
 
