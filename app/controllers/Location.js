@@ -5,6 +5,7 @@ exports.new = function(req, res){
 }
 
 exports.create = function(req, res){
+    var params = {};
     Location.create(params, function(err, result){
         if(err){
             res.render('location/new.html', {errors: [err]});

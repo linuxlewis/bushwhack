@@ -1,37 +1,62 @@
 var Course = require('../models/Course.js');
-var util = require('util');
 
-exports.mapRoutes = function(app){
+exports.new = function(req, res){
+    res.render('course/new.html');
+});
 
-    //new course resource form
-    app.get('/course/new', function(req, res){
-
+exports.create = function(req, res){
+    var params = {}
+    Course.create(params, function(err, result){
+        if(err){
+            res.render('course/new.html', {errors:[err]});
+        }
+        else{
+            res.redirect('/course'):
+        }
     });
+}
 
-    //create course resource
-    app.post('/course', function(req, res){
-
+exports.show = function(req, res){
+    Course.findById(req.params.id, function(err, result){
+        if(err){
+            res.json(err, 500)
+        }
+        else{
+            res.json(result);
+        }
     });
+}
 
-    app.get('/course/:id', function(req, res){
-        Course.findById(req.params.id, function(err, result){
-            if(err){
-                res.json(err, 500)
-            }
-            else{
-                res.json(result);
-            }
-        });
+exports.index = function(req, res){
+    var params = {}
+    Course.findAll(params, function(err, result){
+        if(err){
+            res.json(err, 500);
+        }
+        else{
+            res.json(result);
+        }
     });
+}
 
-    app.get('/course/bylocid/:id', function(req, res) {
-		Course.findByLocationId(req.params.id, function(err, result){
-			if(err){
-				res.json(err, 500)
-			}
-			else{
-				res.json(result);
-			}
-		});
-	});
+exports.delete = function(req, res){
+    Course.delete(req.params.id, function(err, result){
+        if(err){
+            res.json(err, 500); 
+        }
+        else{
+            res.json(result);
+        }
+    }
+}
+
+exports.course_by_location_id = function(req, res){
+    Course.find_by_location_id(req.params.id, function(err, result){
+        if(err){
+            res.json(err, 500);
+        }
+        else{
+            res.json(result);
+        }
+    });
 }
