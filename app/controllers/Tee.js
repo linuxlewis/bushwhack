@@ -78,7 +78,7 @@ exports.delete = function(req, res){
 }
 
 exports.tee_by_hole_id = function(req, res){
-    Tee.findByHoleId(req.params.id, function(err, result){
+    Tee.find_by_hole_id(req.params.id, function(err, result){
         if(err){
             res.json(err, 500)
         }
