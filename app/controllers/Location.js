@@ -40,6 +40,30 @@ exports.index = function(req, res){
     });
 }
 
+exports.edit = function(req, res){
+    Location.findById(req.params.id, function(err, result){
+        if(err){
+            res.render('location/edit.html', {errors:[err]});
+        }
+        else{
+            res.render('location/edit.html', {location:result});
+        }
+    });
+}
+
+exports.update = function(req, res){
+    var params = {};
+    Location.update(params, function(err, result){
+        if(err){
+            res.render('location/edit.html', {errors:[err]});
+        }
+        else{
+            //flash success
+            res.redirect('/location/'+result.id);
+        }
+    });
+}
+
 exports.delete = function(req, res){
     Location.deleteById(req.params.id, function(err, result){
         if(err){
