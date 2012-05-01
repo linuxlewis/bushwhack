@@ -65,7 +65,7 @@ exports.update = function(req, res){
 }
 
 exports.delete = function(req, res){
-    Location.deleteById(req.params.id, function(err, result){
+    Location.delete(req.params.id, function(err, result){
         if(err){
             res.render('location/edit.html', {erros:err});
         }
