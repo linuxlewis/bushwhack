@@ -69,7 +69,7 @@ exports.delete = function(req, res){
     });
 }
 exports.holes_by_course_id = function(req, res){
-    Hole.find_by_course_id(req,params.id, function(err, result){
+    Hole.find_by_course_id(req.params.id, function(err, result){
         if(err){
             res.json(err, 500);
         }

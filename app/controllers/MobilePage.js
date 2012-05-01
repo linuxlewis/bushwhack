@@ -28,7 +28,7 @@ exports.search = function(req, res){
 
 exports.course = function(req, res){
     if(req.params.id){
-        res.render('mobile/course_detail.html', {layout:'mobile_layout.html', location_id:req.params.locid});
+        res.render('mobile/course_detail.html', {layout:'mobile_layout.html', location_id:req.params.id});
     }
     else{
         res.render('mobile/course_detail.html', {layout:'mobile_layout.html'});
