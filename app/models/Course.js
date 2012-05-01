@@ -5,6 +5,18 @@ var check = require('validator').check,
     sanitize = require('validator').sanitize;
 
 
+exports.create = function(params, callback){
+    callback();
+}
+
+exports.update = function(params, callback){
+    callback();
+}
+
+exports.delete = function(params, callback){
+    callback();
+}
+
 exports.findById = function(id, callback){
    check(id).notEmpty().isInt();
    
@@ -18,7 +30,9 @@ exports.findById = function(id, callback){
    });
 }
 
-
+exports.findAll = function(params, callback){
+    callback();
+}
 exports.findByLocationId = function(id, callback){
    check(id).notEmpty().isInt();
    
@@ -30,6 +44,10 @@ exports.findByLocationId = function(id, callback){
            callback(null, result);
        }
    });
+}
+
+exports.find_by_location_id = exports.findByLocationId;
+//i like ruby style methods like this for long method names.
    
    
    
