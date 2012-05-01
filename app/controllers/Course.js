@@ -8,7 +8,7 @@ exports.create = function(req, res){
     var params = {}
     Course.create(params, function(err, result){
         if(err){
-            res.render('course/new.html', {errors:[err]});
+            res.render('course/new.html', {errors:err});
         }
         else{
             res.redirect('/course'):
@@ -42,7 +42,7 @@ exports.index = function(req, res){
 exports.edit = function(req, res){
     Location.findById(req.params.id, function(err, result){
         if(err){
-            res.render('course/edit.html', {errors:[err]});
+            res.render('course/edit.html', {errors:err});
         }
         else{
             res.render('course/edit.html', {course:result});
@@ -54,7 +54,7 @@ exports.update = function(req, res){
     var params = {};
     Location.update(params, function(err, result){
         if(err){
-            res.render('course/edit.html', {errors:[err]});
+            res.render('course/edit.html', {errors:err});
         }
         else{
             res.redirect('/course'+result.id); 
@@ -65,10 +65,10 @@ exports.update = function(req, res){
 exports.delete = function(req, res){
     Course.delete(req.params.id, function(err, result){
         if(err){
-            res.json(err, 500); 
+            res.render('course/edit.html', {errors:err});
         }
         else{
-            res.json(result);
+            res.redirect('/course');
         }
     }
 }

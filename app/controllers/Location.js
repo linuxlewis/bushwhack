@@ -8,7 +8,7 @@ exports.create = function(req, res){
     var params = {};
     Location.create(params, function(err, result){
         if(err){
-            res.render('location/new.html', {errors: [err]});
+            res.render('location/new.html', {errors: err});
         }
         else{
             //req.flash succcess !!
@@ -43,7 +43,7 @@ exports.index = function(req, res){
 exports.edit = function(req, res){
     Location.findById(req.params.id, function(err, result){
         if(err){
-            res.render('location/edit.html', {errors:[err]});
+            res.render('location/edit.html', {errors:err});
         }
         else{
             res.render('location/edit.html', {location:result});
@@ -55,7 +55,7 @@ exports.update = function(req, res){
     var params = {};
     Location.update(params, function(err, result){
         if(err){
-            res.render('location/edit.html', {errors:[err]});
+            res.render('location/edit.html', {errors:err});
         }
         else{
             //flash success
@@ -67,10 +67,11 @@ exports.update = function(req, res){
 exports.delete = function(req, res){
     Location.deleteById(req.params.id, function(err, result){
         if(err){
-            res.json(err, 500);
+            res.render('location/edit.html', {erros:err});
         }
         else{
-            res.send(result);
+            //flash success
+            res.redirect('/location');
         }
     });
 }
