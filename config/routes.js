@@ -18,7 +18,7 @@ module.exports = function(app){
     app.get('/app', MobilePage.app);
     app.get('/home', MobilePage.menu);
     app.get('/find', MobilePage.find);
-    app.get('/course_detail' MobilePage.course);
+    app.get('/course_detail', MobilePage.course);
     app.get('/course_detail/:id', MobilePage.course);
     app.get('/hole_detail', MobilePage.hole);
     app.get('/hole_detail/:course_id/:hole_id', MobilePage.hole);
@@ -37,7 +37,7 @@ module.exports = function(app){
     app.get('/location/:id', Location.show);
     app.get('/location', Location.index);
     app.get('/location/:id/edit', Location.edit);
-    app.put('/location/:id'. Location.update);
+    app.put('/location/:id', Location.update);
     app.del('/location/:id', Location.delete);
     app.get('/location/near/:lat/:lng', Location.near);
                 

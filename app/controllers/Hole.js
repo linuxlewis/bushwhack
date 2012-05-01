@@ -8,7 +8,7 @@ exports.create = function(req, res){
     var params = {};
     Hole.create(params, function(err, result){
         if(err){
-            res.render('hole/new.html', errors:err);
+            res.render('hole/new.html', {errors:err});
         }
     });
 }

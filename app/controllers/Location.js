@@ -32,7 +32,7 @@ exports.index = function(req, res){
     var params = {};
     Location.findAll(params, function(err, result){
         if(err){
-            res.json(err, 500):
+            res.json(err, 500);
         }
         else{
             res.json(result);

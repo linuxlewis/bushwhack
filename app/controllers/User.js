@@ -35,7 +35,7 @@ exports.index = function(req, res){
         else{
             res.json(result);
         }
-    }
+    });
 }
 
 exports.edit = function(req, res){
@@ -59,7 +59,7 @@ exports.update = function(req, res){
             //flash success
             res.redirect('/user/'+req.params.id);
         }
-    }
+    });
 }
 
 exports.delete = function(req, res){
@@ -68,8 +68,9 @@ exports.delete = function(req, res){
             res.render('user/edit.html', {errors:err});
         }
         else
+        {
             //flash success
             res.redirect('/user');
         }
-    }
+    });
 }

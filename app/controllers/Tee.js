@@ -30,7 +30,7 @@ exports.show = function(req, res){
 }
 
 exports.index = function(req, res){
-    var params {};
+    var params = {};
     Tee.findAll(params, function(err, result){
         if(err){
             res.json(err, 500);
@@ -74,7 +74,7 @@ exports.delete = function(req, res){
             //flash success
             res.redirect('/tee');
         }
-    }
+    });
 }
 
 exports.tee_by_hole_id = function(req, res){

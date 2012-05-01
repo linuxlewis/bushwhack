@@ -2,7 +2,7 @@ var Course = require('../models/Course.js');
 
 exports.new = function(req, res){
     res.render('course/new.html');
-});
+}
 
 exports.create = function(req, res){
     var params = {}
@@ -11,7 +11,7 @@ exports.create = function(req, res){
             res.render('course/new.html', {errors:err});
         }
         else{
-            res.redirect('/course'):
+            res.redirect('/course');
         }
     });
 }
@@ -70,7 +70,7 @@ exports.delete = function(req, res){
         else{
             res.redirect('/course');
         }
-    }
+    });
 }
 
 exports.course_by_location_id = function(req, res){
