@@ -36,6 +36,8 @@ module.exports = function(app){
     app.post('/location', Location.create);
     app.get('/location/:id', Location.show);
     app.get('/location', Location.index);
+    app.get('/location/:id/edit', Location.edit);
+    app.put('/location/:id'. Location.update);
     app.del('/location/:id', Location.delete);
     app.get('/location/near/:lat/:lng', Location.near);
                 
@@ -44,6 +46,8 @@ module.exports = function(app){
     app.post('/course', Course.create);
     app.get('/course/:id', Course.show);
     app.get('/course', Course.index);
+    app.get('/course/:id/edit', Course.edit);
+    app.put('/course/:id', Course.update);
     app.del('/course/:id', Course.delete);
     app.get('/location/:id/course', Course.course_by_location_id);
     //deprecated route
@@ -54,6 +58,8 @@ module.exports = function(app){
     app.post('/hole', Hole.create);
     app.get('/hole/:id', Hole.show);
     app.get('/hole', Hole.index);
+    app.get('/hole/:id/edit', Hole.edit);
+    app.put('/hole/:id',Hole.update);
     app.del('/hole/:id', Hole.delete);
     app.get('/course/:id/hole', Hole.holes_by_course_id);
     //deprecated route
@@ -64,6 +70,8 @@ module.exports = function(app){
     app.post('/tee', Tee.create);
     app.get('/tee/:id', Tee.show);
     app.get('/tee', Tee.index);
+    app.get('/tee/:id/edit', Tee.edit);
+    app.put('/tee/:id', Tee.update);
     app.del('/tee/:id', Tee.delete);
     app.get('/hole/:id/tee', Tee.tee_by_hole_id);
     //deprecated route
@@ -74,6 +82,8 @@ module.exports = function(app){
     app.post('/user', User.create);
     app.get('/user/:id', User.show);
     app.get('/user', User.index);
+    app.get('/user/:id/edit', User.edit);
+    app.put('/uder/:id', User.update);
     app.del('/user/:id', User.delete);
     //deprecated route
     app.get('/user/email/:email', User.show);
