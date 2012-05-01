@@ -7,9 +7,9 @@ module.exports = function(app, express){
         app.use(express.bodyParser());
         app.use(express.methodOverride());
         app.set("jsonp callback", true);
-        app.use('/assets',express.static(__dirname + '/assets'));
+        app.use('/assets',express.static(__dirname + '/../app/assets'));
         app.register('.html', require('ejs'));
-        app.set('views', __dirname + '/views');
+        app.set('views', __dirname + '/../app/views');
         app.set('view engine', 'ejs');
         app.use(app.router);
     });
