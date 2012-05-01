@@ -40,6 +40,9 @@ module.exports = function(app){
     app.put('/location/:id', Location.update);
     app.del('/location/:id', Location.delete);
     app.get('/location/near/:lat/:lng', Location.near);
+    //deprecated routes
+    app.get('/loc/near/:lat/:lng', Location.near);
+    app.get('/loc/:id', Location.show);
                 
     //course routes
     app.get('/course/new', Course.new);
@@ -51,6 +54,7 @@ module.exports = function(app){
     app.del('/course/:id', Course.delete);
     app.get('/location/:id/course', Course.course_by_location_id);
     //deprecated route
+    app.get('/loc/:id/courses', Course.course_by_location_id);
     app.get('/course/bylocid/:id', Course.course_by_location_id);
 
     //hole routes
