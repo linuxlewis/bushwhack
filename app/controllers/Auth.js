@@ -8,6 +8,7 @@ var facebook_settings = {
     permissions: 'user_about_me,user_birthday,user_checkins,user_events,user_location,user_photos,user_status,user_videos,email'
 }
 var OAuth = require('oauth').OAuth2;
+var User = require('../models/User.js');
 
 //facebook permissions
 //user_about_me,user_birthday,user_checkins,user_events,user_location,user_photos,user_status,user_videos,email
@@ -34,34 +35,44 @@ function oauth_callback(code, callback_url, callback){
 
 }
 
-exports.mapRoutes = function(app){
+exports.facebook_login = function(req, res){
+    res.redirect(login_url('http://bushwhack.co/auth/facebook/callback'));
+}
 
-    app.get('/auth/facebook/login', function(req, res){
-        res.redirect(login_url('http://bushwhack.co/auth/facebook/callback'));
-    });
 
-    app.get('/auth/facebook/callback', function(req, res){
-        oauth_callback(req.query.code, 'http://bushwhack.co/auth/facebook/callback', function(err, access_token, refresh_token){
-            if(err){
-                res.render('error', err);
-            }
-            else{
-                req.session.facebook = {};  
-                req.session.facebook.access_token = access_token
+exports.facebook_callback = function(req, res){
+    oauth_callback(req.query.code, 'http://bushwhack.co/auth/facebook/callback', function(err, access_token, refresh_token){
+        if(err){
+            res.render('error', err);
+        }
+        else{
+            req.session.facebook = {};  
+            req.session.facebook.access_token = access_token
 
-                if(refresh_token){
-                    req.session.facebook.refresh_token = refresh_token
-                }
-                //res.redirect('/game/new');
-                res.redirect('/home');
+            if(refresh_token){
+                req.session.facebook.refresh_token = refresh_token
             }
 
-        });
-    });
+            var redirect = req.query._next || '/mobile/menu';
+            res.redirect(redirect);
+        }
 
-    app.get('/auth/facebook/logout', function(req, res){
+    });
+}
+
+exports.facebook_logout = function(req, res){
         req.session.destroy();
-        res.redirect('/');
-    });
+        var redirect = req.query._next || '/mobile/menu';
+        res.redirect(redirect);
+}
 
+exports.user_login = function(req, res){
+    //FIXME
+    User.findById(req.body.email, function(err, result){
+
+    });
+}
+
+exports.user_logout = function(req, res){
+    //FIXME
 }
