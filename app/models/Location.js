@@ -5,15 +5,16 @@ var check = require('validator').check,
     sanitize = require('validator').sanitize
 
 exports.create = function(params, callback){
-    callback();
+    callback({error:'model method not implemented'}, null);
 }
 
 exports.update = function(params, callback){
-    callback();
+    callback({error:'model method not implemented'}, null);
+
 }
 
 exports.delete = function(params, callback){
-    callback();
+    callback({error:'model method not implemented'}, null);
 }
 
 exports.findById = function(id, callback){
@@ -30,7 +31,7 @@ exports.findById = function(id, callback){
 }
 
 exports.findAll = function(params, callback){
-    callback();
+    callback({error:'model method not implemented'}, null);
 }
 
 

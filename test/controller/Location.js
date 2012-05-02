@@ -1,47 +1,43 @@
 var Location = require('../../app/controllers/Location.js');
 var should = require('should');
-var testosterone = require('testosterone')({port:3000})
+var request = require('request');
+var util = require('util');
 
 describe('Location Controller', function(){
 
-    before(function(){
-
-    })
-    
     describe('GET /location/new' , function(){
 
-        it('should render a response', function(done){
-            testosterone.get('/location/new', function(res){
+        it('should render a res', function(done){
+            request.get('http://localhost:3000/location/new', function(err, res, body){
                 res.statusCode.should.equal(200);
-                res.body.should.match(/<!DOCTYPE html>/);
+                body.should.match(/<!DOCTYPE html>/);
                 done();
             });
         });
 
         it('should display a form', function(done){
-            request('/location/new', function(error, response, body){
-                should.not.exist(error);
-                response.statusCode.should.equal(200);
+            request.get('http://localhost:3000/location/new', function(err, res, body){
+                res.statusCode.should.equal(200);
                 body.should.match(/<form/);
                 done();
             });
         });
     });
 
-    describe('POST /location/create', function(){
+    describe('POST /location', function(){
 
         it('should be successful', function(done){
-            request.post('http://localhost:3000/location/create', function(error, response, body){
-                should.not.exist(error);
-                response.responseCode.should.equal(302);
+            request.post('http://localhost:3000/location', function(err, res, body){
+                should.not.exist(err);
+                res.statusCode.should.equal(302);
                 done();
             });
         });
 
         it('should render the new form on error', function(done){
-            request.post('http://localhost:3000/location/create', function(error, response, body){
-                should.not.exist(error);
-                response.statusCode.should.equal(200);
+            request.post('http://localhost:3000/location', function(err, res, body){
+                should.not.exist(err);
+                res.statusCode.should.equal(200);
                 body.should.match(/<form/);
                 done();
 
@@ -54,26 +50,25 @@ describe('Location Controller', function(){
     describe('GET /location', function(){
 
         it('should be successful', function(done){
-            request("http://localhost:3000/location", function(error, response, body){
-                should.not.exist(error);
-                response.statusCode.should.equal(200);
+            request.get("http://localhost:3000/location", function(err, res, body){
+                should.not.exist(err);
+                res.statusCode.should.equal(200);
                 done();
             });
-
         });
 
         it('should respond with json', function(done){
-            request("http://localhost:3000/location", function(error, response, body){
-                should.not.exist(error);
-                response.should.be.json;
+            request.get("http://localhost:3000/location", function(err, res, body){
+                should.not.exist(err);
+                res.should.be.json;
                 done();
             });
 
         });
 
         it('should return error with invalid param', function(done){
-            request("http://localhost:3000/location?limit=500", function(error, response, body){
-                response.responseCode.should.equal(403);
+            request.get("http://localhost:3000/location?limit=500", function(err, res, body){
+                res.statusCode.should.equal(403);
                 JSON.parse(body).should.have.property('errors');
                 done();
             });
@@ -81,35 +76,36 @@ describe('Location Controller', function(){
     });
 
     describe('GET /location/:id/edit', function(){
+
         it('should be successful', function(done){
-            request('http://localhost:3000/location/1/edit', function(error, response, body){
-                should.not.exist(error);
-                response.responseCode.should.equal(200);
+            request.get('http://localhost:3000/location/1/edit', function(err, res, body){
+                should.not.exist(err);
+                res.statusCode.should.equal(200);
+                body.should.match(/<!DOCTYPE html>/);
                 done();
             });
         });
 
         it('should display the correct data', function(done){
-            request('http://localhost:3000/location/1/edit', function(error, response, body){
-                response.responseCode.should.equal(200);
+            request.get('http://localhost:3000/location/1/edit', function(err, res, body){
+                res.statusCode.should.equal(200);
                 body.should.match(/Elver Park/);
                 done();
             });
         });
 
         it('should display an error for an invalid id', function(done){
-            request('http://localhost:3000/location/1/edit', function(error, response, body){
+            request.get('http://localhost:3000/location/1/edit', function(err, res, body){
                 body.should.match(/error/);  
                 done();
             });
         });
-
     });
 
     describe("PUT /location/:id", function(){
         it('should be successful', function(done){
-            request.put('http://localhost:3000/location/1', function(error, response, body){
-                response.responseCode.should.equal(200);
+            request.put('http://localhost:3000/location/1', function(err, res, body){
+                res.statusCode.should.equal(200);
                 done();
             });
         });
