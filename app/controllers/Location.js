@@ -41,6 +41,7 @@ exports.index = function(req, res){
 }
 
 exports.edit = function(req, res){
+    console.log('edit');
     Location.findById(req.params.id, function(err, result){
         if(err){
             res.render('location/edit.html', {errors:err});
