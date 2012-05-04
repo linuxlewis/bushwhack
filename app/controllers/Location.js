@@ -8,7 +8,7 @@ exports.create = function(req, res){
     var params = {};
     Location.create(params, function(err, result){
         if(err){
-            res.json({errors: err}, json);
+            res.json({errors: err}, 403);
         }
         else{
             res.json({location:result});

@@ -8,6 +8,8 @@ var nodemock = require('nodemock');
 
 describe('Location Controller', function(){
 
+    
+
     describe('GET /location/new' , function(){
 
         it('should render a response on route', function(done){
@@ -20,7 +22,7 @@ describe('Location Controller', function(){
 
         it('should render the new template', function(done){
             var res = nodemock.mock("render").takes("location/new.html").returns(true);
-            var req = nodemock.mock("params").takes("header").returns(true);
+            var req = {};
 
             Location.new(req, res);
             res.assert().should.be.ok
@@ -29,8 +31,13 @@ describe('Location Controller', function(){
     });
 
     describe('POST /location', function(){
+        beforeEach(function(){
+            var req = nodemock.ignore('hello');
+            req.body = {location:{name:'something', location:'somewhere', description:'pretty'}};
+            var response = nodemock.mock('hello').takes('this').returns('that');
+        });
 
-        it('should return JSON on route', function(done){
+        it('should return a json on route', function(done){
             request.post('http://localhost:3000/location', function(err, res, body){
                 should.not.exist(err);
                 res.statusCode.should.equal(200);
@@ -40,16 +47,20 @@ describe('Location Controller', function(){
             });
         });
 
-        it('should render the new form on error', function(done){
-            request.post('http://localhost:3000/location', function(err, res, body){
-                should.not.exist(err);
-                res.statusCode.should.equal(200);
-                done();
-
-            });
+        it('should return a json on error', function(done){
+            response.reset();
+            response.mock('json').takes({}, 403).returns(true);
+            Location.create(req, response);
+            response.assert().should.be.ok;
+            done();
         });
 
-        it('should pass the correct data');
+        it('should pass the correct data', function(done){
+            response.reset();
+            request.nodemock('param').takes('location').returns(req.body);
+            Location.create(req, response);
+            request.assert().should.be.ok;
+        });
     });
 
     describe('GET /location', function(){
@@ -74,7 +85,7 @@ describe('Location Controller', function(){
         it('should return error with invalid param', function(done){
             request.get("http://localhost:3000/location?limit=500", function(err, res, body){
                 res.statusCode.should.equal(403);
-                body.should.have.property('errors');
+                JSON.parse(body).should.have.property("error");
                 done();
             });
         });
