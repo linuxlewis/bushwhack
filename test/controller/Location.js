@@ -1,35 +1,41 @@
 var Location = require('../../app/controllers/Location.js');
 var should = require('should');
 var request = require('request');
+var Browser = require('zombie');
 var util = require('util');
+var assert = require('assert');
+var nodemock = require('nodemock');
 
 describe('Location Controller', function(){
 
     describe('GET /location/new' , function(){
 
-        it('should render a res', function(done){
+        it('should render a response on route', function(done){
             request.get('http://localhost:3000/location/new', function(err, res, body){
                 res.statusCode.should.equal(200);
-                body.should.match(/<!DOCTYPE html>/);
+                res.should.be.html;
                 done();
             });
         });
 
-        it('should display a form', function(done){
-            request.get('http://localhost:3000/location/new', function(err, res, body){
-                res.statusCode.should.equal(200);
-                body.should.match(/<form/);
-                done();
-            });
+        it('should render the new template', function(done){
+            var res = nodemock.mock("render").takes("location/new.html").returns(true);
+            var req = nodemock.mock("params").takes("header").returns(true);
+
+            Location.new(req, res);
+            res.assert().should.be.ok
+            done();
         });
     });
 
     describe('POST /location', function(){
 
-        it('should be successful', function(done){
+        it('should return JSON on route', function(done){
             request.post('http://localhost:3000/location', function(err, res, body){
                 should.not.exist(err);
-                res.statusCode.should.equal(302);
+                res.statusCode.should.equal(200);
+                res.should.be.json
+                body.should.have.property('location');
                 done();
             });
         });
@@ -95,6 +101,7 @@ describe('Location Controller', function(){
 
         it('should display an error for an invalid id', function(done){
             request.get('http://localhost:3000/location/a/edit', function(err, res, body){
+                body.should.have.property('errors');
                 //body.should.match(/error/);  
                 done();
             });

@@ -8,11 +8,10 @@ exports.create = function(req, res){
     var params = {};
     Location.create(params, function(err, result){
         if(err){
-            res.render('location/new.html', {errors: err});
+            res.json({errors: err}, json);
         }
         else{
-            //req.flash succcess !!
-            res.redirect('/location');
+            res.json({location:result});
         }
     });
 }
@@ -20,10 +19,10 @@ exports.create = function(req, res){
 exports.show = function(req, res){
     Location.findById(req.params.id, function(err, result){
         if(err){
-            res.json(err, 500);
+            res.json(err, 403);
         }
         else{
-            res.json(result);
+            res.json({location:result});
         }
     });
 }
@@ -32,10 +31,10 @@ exports.index = function(req, res){
     var params = {};
     Location.findAll(params, function(err, result){
         if(err){
-            res.json(err, 500);
+            res.json(err, 403);
         }
         else{
-            res.json(result);
+            res.json({location:result});
         }
     });
 }
@@ -44,7 +43,7 @@ exports.edit = function(req, res){
     console.log('edit');
     Location.findById(req.params.id, function(err, result){
         if(err){
-            res.render('location/edit.html', {errors:err});
+            res.render('location/edit.html', {error:err});
         }
         else{
             res.render('location/edit.html', {location:result});
@@ -56,11 +55,10 @@ exports.update = function(req, res){
     var params = {};
     Location.update(params, function(err, result){
         if(err){
-            res.render('location/edit.html', {errors:err});
+            res.json({error:err}, 403);
         }
         else{
-            //flash success
-            res.redirect('/location/'+result.id);
+            res.json({location:result});
         }
     });
 }
@@ -68,11 +66,10 @@ exports.update = function(req, res){
 exports.delete = function(req, res){
     Location.delete(req.params.id, function(err, result){
         if(err){
-            res.render('location/edit.html', {erros:err});
+            res.json({error:err}, 403);
         }
         else{
-            //flash success
-            res.redirect('/location');
+            res.json({location:result});
         }
     });
 }
@@ -80,10 +77,10 @@ exports.delete = function(req, res){
 exports.near = function(req, res){
     Location.findNearest(req.params.lat, req.params.lng, function(err, result){
         if(err){
-            res.json(err, 500);
+            res.json({error:err}, 403);
         }
         else{
-            res.json(result);
+            res.json({location:result});
         }
     });
 }
