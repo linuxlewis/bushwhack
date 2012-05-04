@@ -3,7 +3,7 @@
 
 
 <style type="text/css">
-#map_canvas {width: 80%; height: 500px;}
+/* #map_canvas {width: 200px; height: 300px;} */
 </style>
 
 <!-- begin page -->
@@ -50,13 +50,13 @@
 <!-- end page -->
 
 <!-- begin script -->
+<script charset="UTF-8" type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0">
+</script>
+<script charset="UTF-8" type="text/javascript" src="/assets/js/math.js">
+</script>
 <script type="text/javascript">
 
-var geocoder = new google.maps.Geocoder();
-var map, centerLat, centerLng, holeLat, holeLng, teeLat, teeLng, mapCenter, hole, mapBounds;
-
-//elver park first hole midpoint
-//var latlng = new google.maps.LatLng(43.036948,-89.502177);
+var map, mapOptions, centerLat, centerLng, holeLat, holeLng, teeLat, teeLng, mapCenter, hole, mapBounds;
 
 //$(document).ready(function(){
 $(document).bind('pageinit', function(){
@@ -78,7 +78,7 @@ $(document).bind('pageinit', function(){
 		//alert('hole_lat = ' + hole.hole_lat);
 		holeLat = hole.hole_lat;
 		holeLng = hole.hole_lng;
-		makeMap();
+		checkDataReady();
 	}
 
 	function teeResponse(result) {
@@ -86,76 +86,85 @@ $(document).bind('pageinit', function(){
 		//alert('tee_lat = ' + tee.lat);
 		teeLat = tee.lat;
 		teeLng = tee.lng;
-		makeMap();
+		checkDataReady();
 	}
 
-	function makeMap() {
+	function checkDataReady() {
 		if (
 			(typeof holeLat != 'undefined')	&&
 			(typeof holeLng != 'undefined')	&&
 			(typeof teeLat != 'undefined')	&&
 			(typeof teeLng != 'undefined')
 		) {
-			if (parseInt(hole.hole_number) < 5) {
-				$('#holenext').text('Hole #' + (parseInt(hole.hole_number) + 1))//button('refresh');
-				//$('#holenext').button('refresh');
-			}
-			if (parseInt(hole.hole_number) > 1) {
-                
-				$('#holeprev').text('Hole #' + (parseInt(hole.hole_number) - 1));
-                //var button = '<a id="holeprev" href="/hole_detail/<%- course_id %>/<%- (parseInt(hole_id) - 1)  %>" data-ajax="false" data-theme="a" data-icon="arrow-l" data-role="button">'+ label + '</a>';
-                //$('#li1').append(button);
-                //$('#li1').button();
-
-
-				//$('#holeprev').button('refresh');
-                //$('#holeprev').bind('create', function(){
-                 //   $('#holeprev').button('refresh');
-                //});
-			}
-			
-			//calculate center of map
-			centerLat = (holeLat + teeLat) / 2;
-			centerLng = (holeLng + teeLng) / 2;
-			var mapCenterLL = new google.maps.LatLng(centerLat,centerLng);
-			var holeLL = new google.maps.LatLng(holeLat, holeLng);
-			var teeLL = new google.maps.LatLng(teeLat, teeLng);
-			if (holeLng < teeLng) {
-				var mapBounds = new google.maps.LatLngBounds(holeLL, teeLL);
-			} else {
-				var mapBounds = new google.maps.LatLngBounds(teeLL, holeLL);
-			}
-
-			var myOptions = {
-				zoom: 14,
-				//center: mapCenterLL,
-				mapTypeId: google.maps.MapTypeId.SATELLITE,
-				scrollwheel: false,
-				draggable: false,
-				mapTypeControl: false,
-				navigationControl: true,
-				streetViewControl: false,
-				panControl: false,
-				scaleControl: true,
-				navigationControlOptions: {
-					style: google.maps.NavigationControlStyle.SMALL,
-					position: google.maps.ControlPosition.RIGHT_TOP
-				}
-			};
-			map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-	
-			addruler(teeLat, teeLng, holeLat, holeLng);
-			map.fitBounds(mapBounds);
+			drawMap(holeLat, holeLng, teeLat, teeLng);
 		}
 	}
 
+	function drawMap(hLat, hLng, tLat, tLng) {
+		if (parseInt(hole.hole_number) < 5) {
+			$('#holenext').text('Hole #' + (parseInt(hole.hole_number) + 1))//button('refresh');
+		}
+		if (parseInt(hole.hole_number) > 1) {
+	
+			$('#holeprev').text('Hole #' + (parseInt(hole.hole_number) - 1));
+		}
+		
+		//calculate center of map
+		centerLat = (holeLat + teeLat) / 2;
+		centerLng = (holeLng + teeLng) / 2;
+		mapCenter = new Microsoft.Maps.Location(centerLat, centerLng);
 
-	/*
-	google.maps.event.addListener(map, 'bounds_changed', function() {
-		//gmaps adds rotationZ which breaks our rotation.  delete it every time the map changes.
-		$('#map_canvas').css({'-webkit-transform' : ''});
-	});
-	*/
+		var hLoc = new Microsoft.Maps.Location(hLat, hLng);
+		var tLoc = new Microsoft.Maps.Location(tLat, tLng);
+		var locationRect = new Microsoft.Maps.LocationRect.fromLocations(hLoc, tLoc);
+		var rotationDeg = calculateDegree(hLat, hLng, tLat, tLng);
+		//alert("rotationDeg: " + rotationDeg);
+
+		/*
+		* This code is incomplete!
+		*  -Rotation is hardcoded.
+		*  -Ruler lines aren't done.
+		*  -Text for markers need to be moved into an InfoBox
+		*/
+
+		mapOptions = {
+			credentials: "Arq11YoPO5TewSANz0EobO8TjY6-YNqIXMJkDuYg231yc_loLnZ2iO9k03ajn82A",
+			//mapTypeId: Microsoft.Maps.MapTypeId.aerial,
+			mapTypeId: Microsoft.Maps.MapTypeId.auto,
+			//center: mapCenter,
+			bounds: locationRect,
+			heading: 90,
+			animate: false,
+			zoom:18,
+			disablePanning: true,
+			enableSearchLogo: false,
+			showDashboard: false,
+			showScalebar: false,
+			showCopyright: false, //TODO: We are required to display this elsewhere in the app
+			height: 400, //bing wasn't respecting our div size.  not sure why.
+			width: 300,
+
+		}
+
+
+		map = new Microsoft.Maps.Map(document.getElementById("map_canvas"), mapOptions);
+
+		var targetPin = new Microsoft.Maps.Pushpin(hLoc, {draggable: true, text: "327yds"});
+		var mePin = new Microsoft.Maps.Pushpin(tLoc, {draggable: true, text: "me"});
+
+		//var distIB = new 
+
+		map.entities.push(targetPin);
+		map.entities.push(mePin);
+
+		//I tried every map type and checked this property.  Nothing seemed to enable rotation.
+		//alert("map isRotationEnabled: " + map.isRotationEnabled() );
+	}
+
+	function addBingRuler() {
+	}
+
+
 });
 
 </script>
